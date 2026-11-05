@@ -1,0 +1,86 @@
+<header class="topbar"><div class="inner"><img src="__LOGO__" alt="Electrónica y Servicio"><a class="btn btn-acc btn-sm js-cta" href="#precio" data-src="barra">Inscribirme</a></div></header>
+<main>
+<section class="band dark" aria-labelledby="h-hero">
+  <div class="inner grid2" style="align-items:center">
+    <div class="stack">
+      <div class="eyebrow">Curso en línea · Chrysler · Dodge · Jeep · Ram</div>
+      <h1 id="h-hero">Diagnóstico Stellantis Pro</h1>
+      <p class="lead" style="font-size:1.25rem;color:var(--band-ink)">Encuentra a la primera fallas eléctricas, de red y de motor en Chrysler, Dodge, Jeep y Ram, con multímetro, escáner y osciloscopio. Y cóbralas como especialista.</p>
+      <div class="chips"><span class="chip">12 clases</span><span class="chip">18 horas</span><span class="chip" id="chipPrecio">$1,799 MXN</span><span class="chip">Bono: Laboratorio Interactivo</span></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-acc js-cta" href="#precio" data-src="portada">Inscribirme</a><a class="btn btn-out" href="#diagnostico">Diagnóstico gratis de 2 minutos</a></div>
+      <p style="font-size:.9rem;color:#C9CED4">Imparte el Prof. José Luis Orozco Cuautle · 50 años capacitando técnicos en México y Latinoamérica</p>
+    </div>
+    <figure style="margin:0" aria-label="Osciloscopio mostrando CAN H y CAN L en el conector de diagnóstico">
+      <svg viewBox="0 0 560 380" role="img" aria-labelledby="scopeT" style="width:100%;height:auto;display:block">
+        <title id="scopeT">Pantalla de osciloscopio con CAN H y CAN L en espejo y lecturas del DLC</title>
+        <defs><clipPath id="clipS"><rect x="20" y="20" width="520" height="260" rx="6"/></clipPath>
+          <pattern id="gridS" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#2F3A2F" stroke-width="1"/></pattern></defs>
+        <rect x="0" y="0" width="560" height="380" rx="16" fill="#1E2227"/>
+        <rect x="20" y="20" width="520" height="260" rx="6" fill="#0E120E"/><rect x="20" y="20" width="520" height="260" fill="url(#gridS)"/>
+        <line x1="20" y1="150" x2="540" y2="150" stroke="#3C4A3C" stroke-dasharray="4 4"/>
+        <g clip-path="url(#clipS)"><g class="trace">
+          <path id="canH" d="" fill="none" stroke="#FFC20E" stroke-width="3"/>
+          <path id="canL" d="" fill="none" stroke="#2FB344" stroke-width="3"/>
+        </g></g>
+        <text x="32" y="44" font-family="IBM Plex Mono, monospace" font-size="14" fill="#FFC20E">CH1 CAN H · 1 V/div</text>
+        <text x="32" y="270" font-family="IBM Plex Mono, monospace" font-size="14" fill="#2FB344">CH2 CAN L · 20 µs/div</text>
+        <g font-family="IBM Plex Mono, monospace" font-size="17" fill="#EEF0F2">
+          <rect x="20" y="300" width="160" height="58" rx="8" fill="#2B3036"/><text x="34" y="324" font-size="12" fill="#AEB6BF">DLC 6–14</text><text x="34" y="348">60.2 Ω</text>
+          <rect x="200" y="300" width="160" height="58" rx="8" fill="#2B3036"/><text x="214" y="324" font-size="12" fill="#AEB6BF">CAN H (ON)</text><text x="214" y="348">2.62 V</text>
+          <rect x="380" y="300" width="160" height="58" rx="8" fill="#2B3036"/><text x="394" y="324" font-size="12" fill="#AEB6BF">CAN L (ON)</text><text x="394" y="348">2.38 V</text>
+        </g>
+        <circle cx="520" cy="40" r="7" fill="#2FB344"><animate attributeName="opacity" values="1;.3;1" dur="1.6s" repeatCount="indefinite"/></circle>
+      </svg>
+      <figcaption style="font-size:.82rem;color:#AEB6BF;margin-top:6px">Lecturas típicas de una CAN C sana: valores de referencia, verifique con el fabricante.</figcaption>
+    </figure>
+  </div>
+</section>
+<div class="caution" aria-hidden="true"></div>
+
+<section class="band" aria-labelledby="h-tips"><div class="inner stack">
+  <div class="eyebrow">Dar antes de pedir</div><h2 id="h-tips">3 consejos gratis que puedes usar hoy</h2>
+  <div class="grid3" id="tips"></div>
+</div></section>
+
+<section class="band alt" id="diagnostico" aria-labelledby="h-diag"><div class="inner grid2">
+  <div class="stack"><div class="eyebrow">Autoevaluación · 10 preguntas</div><h2 id="h-diag">¿Qué tan listo estás para diagnosticar un Stellantis?</h2><p class="lead">Contesta con sinceridad. Al final verás tu semáforo y qué clase resuelve cada punto que te falta.</p><div class="yn" id="yn"></div></div>
+  <div class="stack" style="position:sticky;top:80px"><div class="result" id="diagRes" aria-live="polite"></div></div>
+</div></section>
+
+<section class="band" aria-labelledby="h-calc"><div class="inner grid2">
+  <div class="stack"><div class="eyebrow">Calculadora · ejemplo ilustrativo</div><h2 id="h-calc">¿Cuánto dinero dejas ir cada mes?</h2><p class="lead">Mueve los valores según tu taller. Es una estimación para reflexionar, no una promesa de ingresos.</p><div class="stack" id="calc"></div></div>
+  <div class="card" style="align-self:center"><div class="eyebrow">Estimación mensual</div><div class="big" id="calcTot">$0</div><p id="calcDias"></p><p class="hint" style="font-size:.85rem;color:var(--ink-2)">Ejemplo ilustrativo. Los resultados dependen de tu mercado y de tu trabajo.</p><a class="btn btn-acc js-cta" href="#precio" data-src="calculadora">Quiero recuperar ese dinero</a></div>
+</div></section>
+
+<section class="band alt" id="temario" aria-labelledby="h-tem"><div class="inner stack">
+  <div class="eyebrow">Orden de servicio del curso</div><h2 id="h-tem">Temario: 4 módulos, 12 clases</h2>
+  <div class="os"><div class="os-h"><span>ORDEN DE SERVICIO N.º STL-2026</span><span>12 × 1 h 30 min · 18 h</span></div><div id="tem"></div></div>
+</div></section>
+
+<section class="band dark" id="precio" aria-labelledby="h-precio"><div class="inner grid2" style="align-items:center">
+  <div class="stack"><div class="eyebrow">Todo lo que recibes</div><h2 id="h-precio">La nota de venta</h2><p class="lead">12 clases en vivo con grabación y 10 bonos que usarás desde la primera semana.</p><p id="promoTxt" style="color:var(--accent)"></p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-acc js-cta" href="#precio" data-src="nota">Inscribirme ahora</a><a class="btn btn-out" id="lmLink" href="#" target="_blank" rel="noopener">Probar la herramienta gratis</a></div></div>
+  <div class="receipt" id="receipt"></div>
+</div></section>
+
+<section class="band" aria-labelledby="h-para"><div class="inner grid2">
+  <div class="card"><h2 id="h-para" style="font-size:1.8rem">Es para ti si…</h2><ul class="yesno" id="si"></ul></div>
+  <div class="card"><h2 style="font-size:1.8rem">No es para ti si…</h2><ul class="yesno" id="no"></ul></div>
+</div></section>
+
+<section class="band alt" aria-labelledby="h-inst"><div class="inner instr">
+  <img src="__PROF__" alt="Prof. José Luis Orozco Cuautle con un escáner frente a un Jeep" width="520" height="575" loading="lazy">
+  <div class="stack"><div class="eyebrow">Tu instructor</div><h2 id="h-inst">Prof. José Luis Orozco Cuautle</h2><p class="lead" id="bio"></p><div class="chips" id="equipo" style="color:var(--ink)"></div>
+    <div class="result ok"><strong id="garT"></strong><p id="garX"></p></div></div>
+</div></section>
+
+<section class="band" aria-labelledby="h-faq"><div class="inner stack faq"><div class="eyebrow">Preguntas frecuentes</div><h2 id="h-faq">Antes de inscribirte</h2><div class="stack" id="faq"></div></div></section>
+
+<section class="band dark" aria-labelledby="h-fin"><div class="inner stack" style="text-align:center;justify-items:center">
+  <h2 id="h-fin">Deja de cambiar piezas a ciegas en Stellantis</h2><p class="lead">Mide, demuestra y cobra tu diagnóstico. Escribe <strong>STELLANTIS</strong> por WhatsApp y te enviamos fechas y forma de pago.</p>
+  <a class="btn btn-acc js-cta" href="#precio" data-src="cierre">Escribe STELLANTIS por WhatsApp</a>
+</div></section>
+</main>
+<footer class="foot"><div class="inner stack"><p><strong>Diagnóstico Stellantis Pro</strong> · Prof. José Luis Orozco Cuautle · Electrónica y Servicio · <a href="https://electronicayservicio.com" target="_blank" rel="noopener">electronicayservicio.com</a></p><p id="aviso"></p><p>Aviso de privacidad: los datos que compartas por WhatsApp se usan solo para darte información del curso, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (2025). Puedes pedir la baja en cualquier momento.</p></div></footer>
+<div class="sticky" role="region" aria-label="Inscripción"><div class="inner"><div class="lbl">Diagnóstico Stellantis Pro · <span id="stPrecio">$1,799 MXN</span><small>12 clases en línea · 10 bonos · Escribe STELLANTIS</small></div><a class="btn btn-acc js-cta" href="#precio" data-src="barra-fija">Inscribirme</a></div></div>
+<div class="toast" id="toast" role="status" hidden></div>

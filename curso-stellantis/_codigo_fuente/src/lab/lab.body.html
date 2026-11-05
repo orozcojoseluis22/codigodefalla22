@@ -1,0 +1,219 @@
+<header class="top">
+  <div class="wrap">
+    <div class="brandmark">
+      <img src="__LOGO__" alt="Electrónica y Servicio">
+      <div>
+        <div class="t1">Laboratorio de Diagnóstico Stellantis</div>
+        <div class="t2">Chrysler · Dodge · Jeep · Ram · Prof. José Luis Orozco</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="btn btn-ghost btn-sm" id="themeBtn" type="button" aria-label="Cambiar tema claro u oscuro">Tema</button>
+      <a class="btn btn-acc btn-sm" id="ctaTop" href="#" target="_blank" rel="noopener">Escribe STELLANTIS por WhatsApp</a>
+    </div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Secciones del laboratorio">
+  <div class="wrap" role="tablist" id="tablist"></div>
+</nav>
+<main class="wrap">
+
+  <!-- 1 · ASISTENTE -->
+  <section class="view" id="v-asistente" role="tabpanel" aria-labelledby="t-asistente">
+    <div>
+      <div class="eyebrow">Paso a paso según tu equipo</div>
+      <h2>Asistente de diagnóstico</h2>
+      <p class="lead">Escribe el código de falla o elige el síntoma, indica el vehículo y marca el equipo que tienes. El asistente arma la ruta de prueba con valores esperados, te dice qué equipo esencial te falta y qué clase del curso lo explica.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-h"><h3>Mi equipo</h3><span class="hint">Se guarda solo en este navegador</span></div>
+      <div class="chips" id="equipoChips"></div>
+    </div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel-h"><h3>Vehículo y falla</h3><span class="pill info" id="genPill">Generación</span></div>
+        <div class="row">
+          <div class="field"><label for="aMarca">Marca</label><select id="aMarca"><option>Jeep</option><option>Ram</option><option>Dodge</option><option>Chrysler</option></select></div>
+          <div class="field"><label for="aModelo">Modelo</label><input id="aModelo" value="Grand Cherokee" autocomplete="off"></div>
+          <div class="field" style="flex:0 1 110px"><label for="aAnio">Año</label><input id="aAnio" type="number" min="1996" max="2027" value="2019" inputmode="numeric"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="aDtc">Código de falla (DTC)</label><input id="aDtc" placeholder="Ej. P0335, U0100, P0562" value="U0100" autocomplete="off"></div>
+          <div class="field"><label for="aSintoma">o síntoma</label><select id="aSintoma"><option value="">— Sin síntoma —</option></select></div>
+        </div>
+        <div class="row"><button class="btn btn-acc" id="aGo" type="button">Generar ruta de diagnóstico</button><button class="btn btn-line" id="aCopy" type="button">Copiar ruta</button><a class="btn btn-line" id="aWa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a></div>
+        <div id="aEquipo"></div>
+      </div>
+      <div class="panel" id="aOut" aria-live="polite"></div>
+    </div>
+    <div class="panel" id="treeBox" hidden></div>
+  </section>
+
+  <!-- 2 · FORMAS DE ONDA -->
+  <section class="view" id="v-ondas" role="tabpanel" aria-labelledby="t-ondas" hidden>
+    <div>
+      <div class="eyebrow">Hantek · FNIRSI · OpenHantek6022 · capturas de pantalla</div>
+      <h2>Analizador de formas de onda</h2>
+      <p class="lead">Sube el archivo CSV que exporta tu osciloscopio o una captura de pantalla. El laboratorio mide voltajes, frecuencia, ciclo de trabajo, huecos y picos, compara contra la referencia de la señal y te da el siguiente paso.</p>
+    </div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel-h"><h3>1 · ¿Qué señal mediste?</h3></div>
+        <div class="field"><label for="wSig">Señal</label><select id="wSig"></select></div>
+        <div id="wCfg" class="callout"></div>
+        <div class="row"><button class="btn btn-line btn-sm" type="button" id="wSampleOk">Cargar ejemplo correcto</button><button class="btn btn-line btn-sm" type="button" id="wSampleBad">Cargar ejemplo con falla</button></div>
+      </div>
+      <div class="panel">
+        <div class="panel-h"><h3>2 · Sube tu captura</h3></div>
+        <label class="drop" id="wDrop" for="wFile">
+          <strong>Arrastra aquí tu archivo o toca para elegirlo</strong><br>
+          <span class="hint">CSV o TXT con datos (Hantek, OpenHantek6022, FNIRSI) · PNG, JPG o BMP para digitalizar</span>
+        </label>
+        <input id="wFile" type="file" accept=".csv,.txt,.png,.jpg,.jpeg,.bmp,.webp" class="sr">
+        <div id="wCsvOpts" class="row" hidden>
+          <div class="field"><label for="wCol">Canal</label><select id="wCol"></select></div>
+          <div class="field"><label for="wDt">Intervalo de muestreo (si no hay columna de tiempo)</label><input id="wDt" type="number" value="1" step="any"></div>
+          <div class="field" style="flex:0 1 110px"><label for="wDtU">Unidad</label><select id="wDtU"><option value="1e-6">µs</option><option value="1e-3">ms</option><option value="1e-9">ns</option><option value="1">s</option></select></div>
+          <div class="field" style="flex:0 1 110px"><label for="wScale">Factor de sonda</label><select id="wScale"><option value="1">x1</option><option value="10">x10</option><option value="20">x20 (atenuador)</option><option value="0.1">÷10</option></select></div>
+        </div>
+        <p class="hint" id="wFileInfo">Ejemplo cargado: CKP tipo Hall en marcha (señal sintética de referencia).</p>
+      </div>
+    </div>
+    <div class="panel" id="digPanel" hidden>
+      <div class="panel-h"><h3>Digitalizar captura de pantalla</h3><span class="hint" id="digStep">Paso 1: arrastra un rectángulo sobre la cuadrícula del osciloscopio</span></div>
+      <div class="row">
+        <div class="field"><label for="dDivX">Divisiones horizontales</label><input id="dDivX" type="number" value="10" min="1"></div>
+        <div class="field"><label for="dDivY">Divisiones verticales</label><input id="dDivY" type="number" value="8" min="1"></div>
+        <div class="field"><label for="dVdiv">Voltaje por división (V/div)</label><input id="dVdiv" type="number" value="2" step="any"></div>
+        <div class="field"><label for="dTdiv">Tiempo por división</label><input id="dTdiv" type="number" value="5" step="any"></div>
+        <div class="field" style="flex:0 1 100px"><label for="dTu">Unidad</label><select id="dTu"><option value="1e-3">ms</option><option value="1e-6">µs</option><option value="1">s</option></select></div>
+      </div>
+      <div class="row">
+        <button class="btn btn-line btn-sm" type="button" data-mode="rect">1 · Marcar cuadrícula</button>
+        <button class="btn btn-line btn-sm" type="button" data-mode="color">2 · Tocar la traza</button>
+        <button class="btn btn-line btn-sm" type="button" data-mode="zero">3 · Tocar la línea de 0 V</button>
+        <button class="btn btn-acc btn-sm" type="button" id="dGo">Digitalizar y analizar</button>
+        <button class="btn btn-line btn-sm" type="button" id="dOcr">Leer escalas con OCR (beta, requiere internet)</button>
+        <span class="pill info" id="dColor">Color de traza: —</span>
+      </div>
+      <p class="hint" id="dOcrOut"></p>
+      <div class="digit-wrap"><canvas id="digCanvas" width="10" height="10" aria-label="Captura del osciloscopio para digitalizar"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-h"><h3>3 · Resultado</h3><div class="sema" id="wSema" data-s="ok" aria-hidden="true"><i></i><i></i><i></i></div></div>
+      <div class="scope"><div class="scope-h"><span id="wScopeL">CH1</span><span id="wScopeR"></span></div><div id="wPlot"></div></div>
+      <div class="metrics" id="wMetrics"></div>
+      <div id="wVerdict" aria-live="polite"></div>
+      <div class="row"><button class="btn btn-line" id="wCopy" type="button">Copiar resultado</button><a class="btn btn-line" id="wWa" href="#" target="_blank" rel="noopener">Enviar resultado por WhatsApp</a><a class="btn btn-line" id="wIA" href="https://codigodefalla22.com" target="_blank" rel="noopener">Consultar con IA en codigodefalla22.com</a></div>
+    </div>
+  </section>
+
+  <!-- 3 · CÓDIGOS -->
+  <section class="view" id="v-codigos" role="tabpanel" aria-labelledby="t-codigos" hidden>
+    <div>
+      <div class="eyebrow">SAE J2012 genéricos + guía Stellantis</div>
+      <h2>Buscador de códigos de falla</h2>
+      <p class="lead">Busca por código, sistema o palabra (por ejemplo, «bomba», «LIN», «inmovilizador»). Cada código trae causas probables, datos en vivo que debes leer, la forma de onda a capturar y el equipo esencial.</p>
+    </div>
+    <div class="panel">
+      <div class="row"><div class="field"><label for="cQ">Buscar</label><input id="cQ" value="P0016" autocomplete="off" placeholder="Código o palabra"></div></div>
+      <div id="cList" class="grid3"></div>
+    </div>
+  </section>
+
+  <!-- 4 · DATOS EN VIVO -->
+  <section class="view" id="v-datos" role="tabpanel" aria-labelledby="t-datos" hidden>
+    <div>
+      <div class="eyebrow">Escáner · registro de datos</div>
+      <h2>Lector de datos en vivo</h2>
+      <p class="lead">Escribe los valores que ves en el escáner o sube el registro CSV que exporta tu escáner. Cada dato se compara con un rango típico y se interpreta en conjunto (por ejemplo, ajustes de combustible con el MAP).</p>
+    </div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel-h"><h3>Valores del escáner</h3><span class="hint">Motor caliente en ralentí</span></div>
+        <div class="row"><div class="field"><label for="pAlt">Altitud del taller (m)</label><input id="pAlt" type="number" value="1820" step="10"></div><div class="field"><label for="pFile">Registro CSV del escáner (opcional)</label><input id="pFile" type="file" accept=".csv,.txt"></div></div>
+        <div class="grid3" id="pForm"></div>
+        <button class="btn btn-acc" id="pGo" type="button">Interpretar datos</button>
+      </div>
+      <div class="panel" id="pOut" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 5 · REDES -->
+  <section class="view" id="v-redes" role="tabpanel" aria-labelledby="t-redes" hidden>
+    <div>
+      <div class="eyebrow">CAN C · CAN IHS · CAN B · LIN</div>
+      <h2>Comprobador de red en el DLC</h2>
+      <p class="lead">Escribe tus lecturas del multímetro en la caja DLC. El comprobador interpreta resistencia y voltajes, y te dice dónde buscar.</p>
+    </div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel-h"><h3>Lecturas</h3></div>
+        <div class="row">
+          <div class="field"><label for="nTipo">Red</label><select id="nTipo"><option value="c">CAN C (6–14)</option><option value="ihs">CAN IHS (3–11)</option><option value="b">CAN B tolerante a fallas (3–11)</option></select></div>
+          <div class="field"><label for="nR">Resistencia H–L, batería desconectada (Ω)</label><input id="nR" type="number" value="61" step="any"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="nH">CAN H a tierra, encendido ON (V)</label><input id="nH" type="number" value="2.62" step="any"></div>
+          <div class="field"><label for="nL">CAN L a tierra, encendido ON (V)</label><input id="nL" type="number" value="2.38" step="any"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="n16">Terminal 16 (V)</label><input id="n16" type="number" value="12.5" step="any"></div>
+          <div class="field"><label for="n45">Caída 4/5 a negativo (V)</label><input id="n45" type="number" value="0.03" step="any"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="nLinHi">LIN en reposo (V, opcional)</label><input id="nLinHi" type="number" step="any" placeholder="12.4"></div>
+          <div class="field"><label for="nLinLo">LIN nivel bajo (V, opcional)</label><input id="nLinLo" type="number" step="any" placeholder="0.8"></div>
+        </div>
+        <button class="btn btn-acc" id="nGo" type="button">Interpretar red</button>
+      </div>
+      <div class="panel" id="nOut" aria-live="polite"></div>
+    </div>
+    <div class="panel"><div class="panel-h"><h3>Conector DLC J1962 en Stellantis</h3></div><div class="diag-big" id="nDlc"></div></div>
+  </section>
+
+  <!-- 6 · DIAGRAMAS -->
+  <section class="view" id="v-diagramas" role="tabpanel" aria-labelledby="t-diagramas" hidden>
+    <div>
+      <div class="eyebrow">Atlas didáctico · 14 diagramas</div>
+      <h2>Diagramas eléctricos y electrónicos</h2>
+      <p class="lead">Diagramas propios de la arquitectura típica Chrysler, Dodge, Jeep y Ram, con puntos de prueba. Úsalos para entender y explicar; para medir, consulta siempre el diagrama oficial del vehículo exacto.</p>
+    </div>
+    <div class="atlas" id="atlas"></div>
+    <div class="panel"><div class="panel-h"><h3>Fuentes oficiales de diagramas</h3></div><ul id="srcList"></ul></div>
+  </section>
+
+  <!-- 7 · EQUIPO -->
+  <section class="view" id="v-equipo" role="tabpanel" aria-labelledby="t-equipo" hidden>
+    <div>
+      <div class="eyebrow">Qué comprar primero</div>
+      <h2>Equipo esencial por tipo de falla</h2>
+      <p class="lead">Con el equipo que marcaste en el asistente, este cuadro muestra qué fallas puedes diagnosticar hoy y qué compra te abre más trabajos. Precios de referencia con fecha de consulta: confírmalos antes de comprar.</p>
+    </div>
+    <div class="panel" id="eqCover"></div>
+    <div class="panel"><div class="panel-h"><h3>Catálogo de equipo</h3></div><div class="tbl-wrap"><table id="eqTable"></table></div></div>
+  </section>
+
+  <!-- 8 · REFERENCIAS -->
+  <section class="view" id="v-referencias" role="tabpanel" aria-labelledby="t-referencias" hidden>
+    <div>
+      <div class="eyebrow">Biblioteca de formas de onda</div>
+      <h2>Señales de referencia</h2>
+      <p class="lead">Cómo se ve cada señal en buen estado y con falla, con la configuración sugerida del osciloscopio. Las curvas son sintéticas, dibujadas a partir de valores típicos; compáralas siempre con un vehículo sano del mismo motor.</p>
+    </div>
+    <div class="panel">
+      <div class="row"><div class="field"><label for="rSig">Señal</label><select id="rSig"></select></div><div class="field" style="flex:0 1 200px"><label for="rMode">Mostrar</label><select id="rMode"><option value="ok">En buen estado</option><option value="bad">Con falla típica</option></select></div></div>
+      <div class="scope"><div class="scope-h"><span id="rL"></span><span id="rR"></span></div><div id="rPlot"></div></div>
+      <div id="rInfo" class="grid2"></div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div><strong>Diagnóstico Stellantis Pro</strong> · Curso en línea de 12 clases · <span id="fPrecio">$1,799 MXN</span> · Prof. José Luis Orozco · Electrónica y Servicio · <a href="https://electronicayservicio.com" target="_blank" rel="noopener">electronicayservicio.com</a></div>
+    <div id="fAviso"></div>
+    <div>Bibliotecas de código abierto incluidas: uPlot (MIT), PapaParse (MIT) y Fuse.js (Apache-2.0). OCR opcional: tesseract.js (Apache-2.0).</div>
+  </div>
+</footer>
+<dialog id="dlg"><div class="dlg-h"><strong id="dlgT"></strong><button class="btn btn-acc btn-sm" type="button" id="dlgX">Cerrar</button></div><div class="diag-big" id="dlgB"></div></dialog>
+<div class="toast" id="toast" role="status" hidden></div>

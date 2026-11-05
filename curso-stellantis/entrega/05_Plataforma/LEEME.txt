@@ -1,0 +1,5 @@
+No aplica en este curso.
+
+El prompt maestro indica incluir GoHighLevel como bono solo si el tema involucra clientes, seguimiento o ventas. Este curso es técnico (diagnóstico electrónico y eléctrico Stellantis), por lo que el bono se sustituyó por el Laboratorio Interactivo de Diagnóstico Stellantis (04_Bonos/Bono01).
+
+Si más adelante se desea, el detector de fallas (07_Lead_Magnet) ya acepta un webhook entrante de GoHighLevel en CONFIG.webhookUrl.

@@ -1,0 +1,5 @@
+# Generados y pesados (se reconstruyen con los scripts)
+_codigo_fuente/node_modules/
+_codigo_fuente/build/
+entrega/*.zip
+_codigo_fuente/assets/fonts/_*.html

@@ -1,0 +1,20 @@
+V1_9x16_dolor (1080x1920) · Dolor o problema
+[0–3 s] ¿Tu Jeep llegó con ocho códigos U y no sabes por dónde empezar?
+[3–10 s] Paso uno: con la batería desconectada mide entre las terminales 6 y 14 del conector de diagnóstico. Unos 60 ohms es una red sana; 120, falta una terminación.
+[10–17 s] Paso dos: con el encendido en ON, CAN H debe estar cerca de 2.6 volts y CAN L cerca de 2.4. En el osciloscopio se ven en espejo.
+[17–24 s] Paso tres: si varios módulos reportan que perdieron al PCM, revisa el PCM: su alimentación, su tierra y su tramo de red.
+[24–30 s] Esto y mucho más en Diagnóstico Stellantis Pro: 12 clases en línea, 1,799 pesos. Escribe STELLANTIS por WhatsApp.
+
+V2_1x1_dinero (1080x1080) · Dinero u oportunidad
+[0–3 s] Escanear no es diagnosticar.
+[3–10 s] Tip uno: entrega un informe con la medición y la captura del osciloscopio. Así el cliente ve lo que tú viste.
+[10–17 s] Tip dos: ofrece tres opciones: básico, recomendado y premium. El cliente elige sin presión.
+[17–24 s] Tip tres: revisa campañas por VIN antes de presupuestar. Le ahorras dinero al cliente y ganas su confianza.
+[24–30 s] Aprende a medir y a cobrar tu diagnóstico en Diagnóstico Stellantis Pro. 1,799 pesos. Escribe STELLANTIS por WhatsApp.
+
+V3_16x9_sistema (1920x1080) · Resultado o sistema
+[0–3 s] Sube tu forma de onda. Recibe tu siguiente prueba.
+[3–10 s] Uno: exporta el CSV de tu Hantek o la captura de tu FNIRSI y súbelos al Laboratorio. Mide voltaje, frecuencia y huecos, y te da un semáforo.
+[10–17 s] Dos: escribe el código de falla, marca tu equipo y obtén la ruta de 6 pasos con valores esperados.
+[17–24 s] Tres: 14 diagramas didácticos con puntos de prueba de la red, carga, arranque e inmovilizador.
+[24–30 s] El Laboratorio está incluido en Diagnóstico Stellantis Pro. 12 clases, 1,799 pesos. Escribe STELLANTIS por WhatsApp.

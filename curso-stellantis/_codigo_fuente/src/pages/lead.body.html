@@ -1,0 +1,46 @@
+<header class="topbar"><div class="inner"><img src="__LOGO__" alt="Electrónica y Servicio"><a class="btn btn-acc btn-sm" id="topCurso" href="#siguiente">Ver el curso</a></div></header>
+<main>
+<section class="band dark" aria-labelledby="h-lm"><div class="inner grid2" style="align-items:center">
+  <div class="stack">
+    <div class="eyebrow">Herramienta gratuita · Chrysler · Dodge · Jeep · Ram</div>
+    <h1 id="h-lm">Detector de Fallas Stellantis</h1>
+    <p class="lead" style="font-size:1.22rem;color:var(--band-ink)">Para técnicos y dueños de taller: tu ruta de diagnóstico con semáforo, según el equipo que tienes, en 7 minutos.</p>
+    <div class="chips"><span class="chip">100% gratis</span><span class="chip">Sin registro</span><span class="chip">5 fallas típicas</span><span class="chip">Resultado personalizado</span></div>
+    <div><a class="btn btn-acc" href="#herramienta">Empezar ahora</a></div>
+  </div>
+  <div class="card" style="background:#353B42;border-color:#4A5159;color:var(--band-ink)">
+    <div class="eyebrow">Qué obtienes</div>
+    <ul style="margin:0;padding-left:20px;display:grid;gap:6px"><li>La siguiente prueba exacta según lo que ya mediste</li><li>Qué equipo esencial te falta para esa falla</li><li>Un semáforo y 3 recomendaciones concretas</li><li>La clase del curso que lo explica completo</li></ul>
+  </div>
+</div></section>
+<div class="caution" aria-hidden="true"></div>
+
+<section class="band" id="herramienta" aria-labelledby="h-tool"><div class="inner stack" style="max-width:860px">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h2 id="h-tool">Tu diagnóstico</h2><span class="mono" id="progTxt">Paso 1 de 4</span></div>
+  <div class="prog" aria-hidden="true"><i id="progBar"></i></div>
+  <div class="card" id="step"></div>
+</div></section>
+
+<section class="band alt" id="resultado" aria-labelledby="h-res" hidden><div class="inner stack" style="max-width:860px">
+  <h2 id="h-res">Tu resultado</h2>
+  <div id="resCard"></div>
+  <div class="card stack"><h3>Recibe tus resultados por WhatsApp</h3>
+    <div class="grid2"><div class="range"><label for="lmNombre">Nombre</label><input id="lmNombre" autocomplete="name" style="padding:10px;border:2px solid var(--line);border-radius:8px;background:var(--surface-2)"></div><div class="range"><label for="lmTel">WhatsApp (10 dígitos)</label><input id="lmTel" inputmode="tel" autocomplete="tel" style="padding:10px;border:2px solid var(--line);border-radius:8px;background:var(--surface-2)"></div></div>
+    <label style="display:flex;gap:8px;align-items:flex-start;font-size:.9rem"><input type="checkbox" id="lmOk" style="margin-top:4px"> Acepto recibir mi resultado e información del curso por WhatsApp. Puedo pedir la baja cuando quiera (aviso de privacidad al pie).</label>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-acc" type="button" id="lmSend">Recibir mis resultados por WhatsApp</button><button class="btn btn-line" type="button" id="lmChallenge">Reta a un colega</button><button class="btn btn-line" type="button" id="lmRestart">Hacer otro diagnóstico</button></div>
+    <p id="lmMsg" class="mono" style="font-size:.85rem"></p>
+  </div>
+</div></section>
+
+<section class="band dark" id="siguiente" aria-labelledby="h-next"><div class="inner grid2" style="align-items:center">
+  <div class="stack"><div class="eyebrow">Siguiente paso</div><h2 id="h-next">Diagnóstico Stellantis Pro</h2><p class="lead">12 clases en línea con el Prof. José Luis Orozco Cuautle: redes CAN y LIN, Security Gateway, TIPM, sensores, osciloscopio, carga, arranque e inmovilizador. Incluye el Laboratorio Interactivo completo y 9 bonos más.</p>
+    <div class="chips"><span class="chip">12 clases · 18 h</span><span class="chip" id="lmPrecio">$1,799 MXN</span><span class="chip">10 bonos</span></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-acc" id="lmCurso" href="#" target="_blank" rel="noopener">Ver el curso completo</a><a class="btn btn-out" id="lmWaCurso" href="#" target="_blank" rel="noopener">Escribe STELLANTIS por WhatsApp</a></div></div>
+  <div class="card" style="background:#353B42;border-color:#4A5159;color:var(--band-ink)"><div class="eyebrow">Lo que verás en el curso</div><ul id="lmTemas" style="margin:0;padding-left:20px;display:grid;gap:4px"></ul></div>
+</div></section>
+
+<section class="band" aria-labelledby="h-faq"><div class="inner stack faq" style="max-width:860px"><h2 id="h-faq">Preguntas frecuentes</h2><div class="stack" id="faq"></div></div></section>
+</main>
+<footer class="foot"><div class="inner stack"><p><strong>Detector de Fallas Stellantis</strong> · Prof. José Luis Orozco Cuautle · Electrónica y Servicio · <a href="https://electronicayservicio.com" target="_blank" rel="noopener">electronicayservicio.com</a></p><p id="aviso"></p><p>Aviso de privacidad: tu nombre y WhatsApp se usan solo para enviarte tu resultado e información del curso, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (2025). El progreso de la herramienta se guarda solo en tu navegador. Puedes pedir la baja en cualquier momento.</p><p>Esta herramienta orienta; no sustituye la medición ni el diagrama oficial del vehículo. Valores típicos; verifique con el manual del fabricante.</p></div></footer>
+<div class="sticky" role="region" aria-label="Curso"><div class="inner"><div class="lbl">Diagnóstico Stellantis Pro · <span id="stPrecio">$1,799 MXN</span><small>12 clases en línea · Escribe STELLANTIS</small></div><a class="btn btn-acc" id="stBtn" href="#siguiente">Ver el curso</a></div></div>
+<div class="toast" id="toast" role="status" hidden></div>

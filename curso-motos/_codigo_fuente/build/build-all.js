@@ -1,0 +1,20 @@
+// Regenera TODOS los entregables desde la fuente única (data/). Uso: node build/build-all.js
+const { execSync } = require("child_process");
+const run = (c) => { console.log("\n▶", c); execSync(c, { stdio: "inherit", env: { ...process.env, NODE_PATH: __dirname + "/../node_modules" } }); };
+run("node build/qa/validar-clases.js");
+run("node build/lib/curso.js");
+run("node build/diagramas/build-diagramas.js");
+run("node build/docs/investigacion.js");
+run("node build/docs/temario.js");
+run("node build/docs/manual.js");
+run("node build/pptx/clases.js");
+run("node build/docs/examen.js");
+run("node build/docs/bonos.js");
+run("python3 build/xlsx/excel.py");
+run("node build/web/landing.js");
+run("node build/web/leadmagnet.js");
+run("node build/ads/imagenes.js");
+run("node build/docs/copys.js");
+run("node build/videos/videos.js all");
+run("node build/qa/qa.js");
+run("node build/docs/indice.js");

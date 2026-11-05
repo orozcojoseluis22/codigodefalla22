@@ -1,0 +1,192 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-400.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-500.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-600.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-700.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-800.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/BarlowCondensed-500.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/BarlowCondensed-600.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/BarlowCondensed-700.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/BarlowCondensed-800.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/IBMPlexMono-400.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/IBMPlexMono-500.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/IBMPlexMono-600.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/IBMPlexMono-700.ttf) format('truetype');
+}
+html,body{margin:0;padding:0;background:transparent}*{box-sizing:border-box;margin:0;padding:0}
+.stage{position:relative;overflow:hidden;background:#2B3036;font-family:'Barlow',sans-serif;color:#fff;background-image:linear-gradient(rgba(255,255,255,.045) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.045) 2px,transparent 2px);background-size:40px 40px}
+.stripe{position:absolute;left:0;top:0;bottom:0;background:#FFC20E}
+.prog{position:absolute;height:8px;background:rgba(255,255,255,.12);border-radius:8px;overflow:hidden}.prog i{display:block;height:100%;width:0;background:#FFC20E}
+.badge{position:absolute;border-radius:50%;background:#1E2227;border:solid #FFC20E;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Barlow Condensed';font-weight:800;color:#FFC20E;line-height:1;z-index:3}
+.badge small{font-family:'IBM Plex Mono';font-weight:600;color:#EEF0F2}
+.scene{position:absolute;inset:0;opacity:0}
+.head{position:absolute;display:flex;flex-direction:column;gap:14px}
+.eye{font-family:'IBM Plex Mono';font-weight:600;color:#FFC20E;letter-spacing:.08em}
+.hook{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;line-height:.98}
+.hook em{font-style:normal;color:#FFC20E}.hook em.n{white-space:nowrap}
+.vis{position:absolute;display:flex;align-items:center;justify-content:center;transform-origin:center}
+.vis svg{width:100%;height:100%}
+.vals{position:absolute;display:flex;gap:4%;justify-content:center}
+.val{flex:1;background:#1E2227;border:2px solid #4A525B;border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.val b{font-family:'IBM Plex Mono';font-weight:700;color:#FFC20E;line-height:1.1}
+.val span{font-weight:600;color:#D7DBE0;text-transform:uppercase;letter-spacing:.04em}
+.steps{position:absolute;display:flex;gap:16px}
+.st{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed';font-weight:800;font-size:34px;text-transform:uppercase;color:#6B737C;background:#1E2227;border:2px solid #3A4047;border-radius:12px;padding:10px 16px}
+.st i{font-style:normal;width:40px;height:40px;border-radius:50%;background:#3A4047;color:#1E2227;display:flex;align-items:center;justify-content:center}
+.st.on{color:#fff;border-color:#FFC20E}.st.on i{background:#FFC20E}
+.bar{position:absolute;left:0;right:0;background:#1E2227;border-top:6px solid #FFC20E;display:flex;align-items:center;justify-content:space-between;z-index:4}
+.bar .t{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;line-height:1.1;color:#EEF0F2}.bar .t b{color:#FFC20E}
+.bar .btn{background:#FFC20E;color:#1E2227;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;border-radius:12px;padding:18px 26px;white-space:nowrap}
+.ex{position:absolute;font-family:'IBM Plex Mono';font-size:18px;color:#AEB4BB;z-index:4}</style></head><body><div class="stage" style="width:1080px;height:1080px">
+    <div class="stripe" style="width:24px"></div>
+    <div class="prog" style="left:44px;right:20px;top:40px"><i id="pb"></i></div>
+    <div class="badge" style="left:904px;top:56px;width:116px;height:116px;font-size:42px;border-width:6px">E·S<small style="font-size:12px">ELECTRÓNICA</small><small style="font-size:12px">Y SERVICIO</small></div>
+    <div class="scene" id="s0" data-a="0" data-b="3">
+      <div class="head" style="left:76px;top:60px;width:744px;height:270px"><div class="eye" style="font-size:30px">OPORTUNIDAD</div><div class="hook" style="font-size:84px">Más motos, <em>pocos que las miden</em></div></div>
+      <div class="vis" style="left:76px;top:330px;width:928px;height:430px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
+  <line x1="90" y1="460" x2="760" y2="460" stroke="#AEB4BB" stroke-width="3"/>
+  <rect x="170" y="213.87500000000003" width="190" height="246.12499999999997" rx="10" fill="#6B737C"/><text x="265" y="203.87500000000003" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="44" font-weight="700" fill="#fff">8.95 M</text><text x="265" y="505" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="30" font-weight="600" fill="#D7DBE0">2024</text><rect x="470" y="169.87499999999994" width="190" height="290.12500000000006" rx="10" fill="#FFC20E"/><text x="565" y="159.87499999999994" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="44" font-weight="700" fill="#fff">10.55 M</text><text x="565" y="505" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="30" font-weight="600" fill="#D7DBE0">2025</text>
+  <text x="90" y="545" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#AEB4BB">Motos registradas en circulación · INEGI (vía prensa)</text>
+  <g transform="translate(60 40)"><circle cx="40" cy="70" r="34" fill="none" stroke="#FFC20E" stroke-width="9"/><circle cx="190" cy="70" r="34" fill="none" stroke="#FFC20E" stroke-width="9"/><path d="M40 70 L95 20 L150 20 L190 70 M95 20 L120 70 L150 20" fill="none" stroke="#FFC20E" stroke-width="9" stroke-linejoin="round"/></g>
+</svg></div>
+      
+    </div><div class="scene" id="s1" data-a="3" data-b="10">
+      <div class="head" style="left:76px;top:60px;width:744px;height:270px"><div class="eye" style="font-size:30px">IDEA 1</div><div class="hook" style="font-size:84px">Cobra el diagnóstico <em>con evidencia</em></div></div>
+      <div class="vis" style="left:76px;top:330px;width:928px;height:430px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg"><rect x="170" y="20" width="460" height="520" rx="16" fill="#fff"/><rect x="170" y="20" width="460" height="80" rx="16" fill="#1E2227"/><text x="400" y="72" text-anchor="middle" font-family="'Barlow Condensed'" font-size="34" font-weight="800" fill="#FFC20E">REPORTE DE DIAGNÓSTICO</text>
+  <circle cx="215" cy="150" r="18" fill="#2FB344"/><text x="250" y="160" font-family="'Barlow'" font-size="28" font-weight="600" fill="#1E2227">Batería</text><text x="600" y="160" text-anchor="end" font-family="'IBM Plex Mono'" font-size="26" font-weight="700" fill="#1E2227">12.7 V</text><circle cx="215" cy="222" r="18" fill="#E5484D"/><text x="250" y="232" font-family="'Barlow'" font-size="28" font-weight="600" fill="#1E2227">Carga 5,000 rpm</text><text x="600" y="232" text-anchor="end" font-family="'IBM Plex Mono'" font-size="26" font-weight="700" fill="#1E2227">12.4 V</text><circle cx="215" cy="294" r="18" fill="#E5484D"/><text x="250" y="304" font-family="'Barlow'" font-size="28" font-weight="600" fill="#1E2227">Conector</text><text x="600" y="304" text-anchor="end" font-family="'IBM Plex Mono'" font-size="26" font-weight="700" fill="#1E2227">Derretido</text><circle cx="215" cy="366" r="18" fill="#FFC20E"/><text x="250" y="376" font-family="'Barlow'" font-size="28" font-weight="600" fill="#1E2227">Tierra regulador</text><text x="600" y="376" text-anchor="end" font-family="'IBM Plex Mono'" font-size="26" font-weight="700" fill="#1E2227">0.31 V</text><circle cx="215" cy="438" r="18" fill="#2FB344"/><text x="250" y="448" font-family="'Barlow'" font-size="28" font-weight="600" fill="#1E2227">Luces</text><text x="600" y="448" text-anchor="end" font-family="'IBM Plex Mono'" font-size="26" font-weight="700" fill="#1E2227">OK</text>
+  <rect x="200" y="500" width="400" height="6" fill="#FFC20E"/></svg></div>
+      <div class="vals" style="left:76px;top:770px;width:928px;height:110px"><div class="val"><b style="font-size:42px">Fotos</b><span style="font-size:20px">de cada medición</span></div><div class="val"><b style="font-size:42px">Semáforo</b><span style="font-size:20px">fácil de entender</span></div></div>
+    </div><div class="scene" id="s2" data-a="10" data-b="17">
+      <div class="head" style="left:76px;top:60px;width:744px;height:270px"><div class="eye" style="font-size:30px">IDEA 2</div><div class="hook" style="font-size:84px">Ofrece un <em>menú de 3 opciones</em></div></div>
+      <div class="vis" style="left:76px;top:330px;width:928px;height:430px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="80" width="235" height="400" rx="18" fill="#1E2227" stroke="#4A525B" stroke-width="3"/><text x="147" y="140" text-anchor="middle" font-family="'Barlow Condensed'" font-size="34" font-weight="800" fill="#fff">BÁSICO</text>
+    <foreignObject x="45" y="170" width="205" height="160"><div xmlns="http://www.w3.org/1999/xhtml" style="font:600 24px Barlow;color:#D7DBE0;text-align:center">Regulador</div></foreignObject>
+    <text x="147" y="420" text-anchor="middle" font-family="'IBM Plex Mono'" font-size="40" font-weight="700" fill="#FFC20E">$1,060</text><rect x="285" y="40" width="235" height="440" rx="18" fill="#FFC20E" stroke="#4A525B" stroke-width="3"/><text x="402" y="100" text-anchor="middle" font-family="'Barlow Condensed'" font-size="34" font-weight="800" fill="#1E2227">RECOMENDADO</text>
+    <foreignObject x="300" y="130" width="205" height="160"><div xmlns="http://www.w3.org/1999/xhtml" style="font:600 24px Barlow;color:#1E2227;text-align:center">Regulador + conector + tierra</div></foreignObject>
+    <text x="402" y="400" text-anchor="middle" font-family="'IBM Plex Mono'" font-size="40" font-weight="700" fill="#1E2227">$1,460</text><rect x="540" y="80" width="235" height="400" rx="18" fill="#1E2227" stroke="#4A525B" stroke-width="3"/><text x="657" y="140" text-anchor="middle" font-family="'Barlow Condensed'" font-size="34" font-weight="800" fill="#fff">PREMIUM</text>
+    <foreignObject x="555" y="170" width="205" height="160"><div xmlns="http://www.w3.org/1999/xhtml" style="font:600 24px Barlow;color:#D7DBE0;text-align:center">Serie + tierra dedicada + revisión</div></foreignObject>
+    <text x="657" y="420" text-anchor="middle" font-family="'IBM Plex Mono'" font-size="40" font-weight="700" fill="#FFC20E">$2,950</text>
+    <text x="400" y="545" text-anchor="middle" font-family="'IBM Plex Mono'" font-size="20" fill="#AEB4BB">Ejemplo ilustrativo · calculadora del curso</text></svg></div>
+      <div class="vals" style="left:76px;top:770px;width:928px;height:110px"><div class="val"><b style="font-size:42px">3</b><span style="font-size:20px">opciones</span></div><div class="val"><b style="font-size:42px">Centro</b><span style="font-size:20px">la más elegida</span></div></div>
+    </div><div class="scene" id="s3" data-a="17" data-b="24">
+      <div class="head" style="left:76px;top:60px;width:744px;height:270px"><div class="eye" style="font-size:30px">IDEA 3</div><div class="hook" style="font-size:84px">Plan <em>preventivo mensual</em></div></div>
+      <div class="vis" style="left:76px;top:330px;width:928px;height:430px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg"><rect x="120" y="40" width="560" height="440" rx="18" fill="#1E2227" stroke="#4A525B" stroke-width="3"/><text x="400" y="100" text-anchor="middle" font-family="'Barlow Condensed'" font-size="40" font-weight="800" fill="#FFC20E">PLAN PREVENTIVO MENSUAL</text>
+  <rect x="160" y="130" width="480" height="64" rx="10" fill="#2B3036"/><text x="185" y="172" font-family="'Barlow'" font-size="28" font-weight="600" fill="#fff">Mes 1 · revisión con semáforo</text><circle cx="605" cy="162" r="18" fill="#2FB344"/><rect x="160" y="212" width="480" height="64" rx="10" fill="#2B3036"/><text x="185" y="254" font-family="'Barlow'" font-size="28" font-weight="600" fill="#fff">Mes 2 · revisión con semáforo</text><circle cx="605" cy="244" r="18" fill="#2FB344"/><rect x="160" y="294" width="480" height="64" rx="10" fill="#2B3036"/><text x="185" y="336" font-family="'Barlow'" font-size="28" font-weight="600" fill="#fff">Mes 3 · revisión con semáforo</text><circle cx="605" cy="326" r="18" fill="#2FB344"/><rect x="160" y="376" width="480" height="64" rx="10" fill="#2B3036"/><text x="185" y="418" font-family="'Barlow'" font-size="28" font-weight="600" fill="#fff">Mes 4 · revisión con semáforo</text><circle cx="605" cy="408" r="18" fill="#2FB344"/>
+  <text x="400" y="530" text-anchor="middle" font-family="'IBM Plex Mono'" font-size="22" fill="#AEB4BB">Repartidores y flotillas · prioridad y precio fijo</text></svg></div>
+      <div class="vals" style="left:76px;top:770px;width:928px;height:110px"><div class="val"><b style="font-size:42px">Mensual</b><span style="font-size:20px">para repartidores</span></div><div class="val"><b style="font-size:42px">Fijo</b><span style="font-size:20px">precio claro</span></div></div>
+    </div><div class="scene" id="s4" data-a="24" data-b="28">
+      <div class="head" style="left:76px;top:60px;width:744px;height:270px"><div class="eye" style="font-size:30px">SIN PROMESAS, CON MÉTODO</div><div class="hook" style="font-size:84px">Diagnostica y <em>cobra mejor</em></div></div>
+      <div class="vis" style="left:76px;top:330px;width:928px;height:430px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="250" y="10" width="300" height="540" rx="40" fill="#1E2227" stroke="#4A525B" stroke-width="6"/>
+  <rect x="268" y="40" width="264" height="480" rx="20" fill="#F2F3F5"/>
+  <rect x="268" y="40" width="264" height="80" rx="20" fill="#2B3036"/><text x="400" y="88" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="26" font-weight="800" fill="#FFC20E">ÁRBOL DE DIAGNÓSTICO</text>
+  <rect x="288" y="140" width="224" height="16" rx="8" fill="#D8DCE1"/><rect x="288" y="140" width="130" height="16" rx="8" fill="#FFC20E"/>
+  <text x="290" y="200" font-family="'Barlow Condensed',sans-serif" font-size="26" font-weight="800" fill="#1E2227">¿A 5,000 RPM SUBE</text><text x="290" y="230" font-family="'Barlow Condensed',sans-serif" font-size="26" font-weight="800" fill="#1E2227">A 13.5–14.8 V?</text>
+  <rect x="288" y="255" width="224" height="40" rx="8" fill="#FFF4CC"/><text x="300" y="282" font-family="'IBM Plex Mono',monospace" font-size="18" font-weight="700" fill="#1E2227">ESPERADO 13.5–14.8 V</text>
+  <rect x="288" y="315" width="105" height="56" rx="10" fill="#2FB344"/><text x="340" y="352" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="28" font-weight="800" fill="#fff">SÍ</text>
+  <rect x="407" y="315" width="105" height="56" rx="10" fill="#E5484D"/><text x="460" y="352" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="28" font-weight="800" fill="#fff">NO</text>
+  <rect x="288" y="395" width="224" height="105" rx="12" fill="#fff" stroke="#1E2227" stroke-width="3"/>
+  <circle cx="318" cy="430" r="12" fill="#3A4047"/><circle cx="348" cy="430" r="12" fill="#FFC20E"/><circle cx="378" cy="430" r="12" fill="#3A4047"/>
+  <text x="300" y="470" font-family="'IBM Plex Mono',monospace" font-size="15" font-weight="700" fill="#1E2227">RESULTADO + 3 PASOS</text><text x="300" y="490" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#525A63">Clase que lo resuelve</text>
+  <g transform="translate(40 120)"><rect x="0" y="0" width="170" height="250" rx="22" fill="#FFC20E" stroke="#1E2227" stroke-width="5"/><rect x="18" y="22" width="134" height="70" rx="8" fill="#C9D6B0" stroke="#1E2227" stroke-width="4"/><text x="85" y="72" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="34" font-weight="700" fill="#1E2A12">14.2</text><circle cx="85" cy="165" r="48" fill="#2B3036" stroke="#1E2227" stroke-width="4"/><path d="M85 165 L110 135" stroke="#FFC20E" stroke-width="7" stroke-linecap="round"/></g><g transform="translate(600 200)"><g transform="translate(0 0) scale(1.1)"><rect x="0" y="0" width="54" height="150" rx="27" fill="#1E2227" stroke="#4A525B" stroke-width="3"/><circle cx="27" cy="27" r="17" fill="#3A4047"/><circle cx="27" cy="75" r="17" fill="#FFC20E"/><circle cx="27" cy="123" r="17" fill="#3A4047"/></g></g>
+</svg></div>
+      <div class="vals" style="left:76px;top:770px;width:928px;height:110px"><div class="val"><b style="font-size:42px">12</b><span style="font-size:20px">clases en vivo</span></div><div class="val"><b style="font-size:42px">$1,799</b><span style="font-size:20px">MXN</span></div></div>
+    </div>
+    <div class="bar" style="top:910px;height:170px;padding:0 54px 0 73px"><div class="t" style="font-size:32px">Diagnóstico Eléctrico de Motos<br><b>12 clases en vivo · $1,799 MXN</b></div><div class="btn" id="cta" style="font-size:34px">Escribe MOTO por WhatsApp</div></div>
+    <div class="ex" style="left:44px;top:876px">Valores típicos · verifica con el manual del fabricante</div>
+  </div>
+  <script>
+  var DUR = 28;
+  function ease(x){ return x < 0 ? 0 : x > 1 ? 1 : 1 - Math.pow(1 - x, 3); }
+  window.seek = function(t){
+    document.getElementById("pb").style.width = (t / DUR * 100).toFixed(2) + "%";
+    document.querySelectorAll(".scene").forEach(function(s){
+      var a = +s.dataset.a, b = +s.dataset.b, last = b >= DUR;
+      var inn = ease((t - a) / 0.35), out = last ? 1 : 1 - ease((t - (b - 0.3)) / 0.3);
+      var o = Math.max(0, Math.min(inn, out)); if (t < a || t > b + 0.01) o = 0;
+      s.style.opacity = o;
+      var h = s.querySelector(".head"); h.style.transform = "translateY(" + ((1 - ease((t - a) / 0.45)) * 40).toFixed(1) + "px)";
+      var vis = s.querySelector(".vis"); vis.style.transform = "scale(" + (0.94 + 0.06 * ease((t - a - 0.1) / 0.6)).toFixed(3) + ")";
+      s.querySelectorAll(".val").forEach(function(v, i){ var k = ease((t - a - 0.5 - i * 0.25) / 0.4); v.style.opacity = k; v.style.transform = "translateY(" + ((1 - k) * 24).toFixed(1) + "px)"; });
+    });
+    var st = document.querySelectorAll(".st");
+    st.forEach(function(e, i){ var on = t >= [3, 9, 15, 21][i]; e.className = "st" + (on ? " on" : ""); });
+    var cta = document.getElementById("cta"); var pulse = t > DUR - 4 ? 1 + 0.04 * Math.sin((t - (DUR - 4)) * 6) : 1; cta.style.transform = "scale(" + pulse.toFixed(3) + ")";
+  };
+  window.seek(0);
+  </script></body></html>

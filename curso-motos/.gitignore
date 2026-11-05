@@ -1,0 +1,5 @@
+# Generados o temporales
+_codigo_fuente/.tmp/
+_codigo_fuente/node_modules/
+# El ZIP duplica todo el contenido de esta carpeta (se entregó por el chat)
+00_Indice_de_entregables/*.zip

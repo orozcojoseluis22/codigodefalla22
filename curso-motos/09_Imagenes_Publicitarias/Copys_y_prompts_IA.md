@@ -1,0 +1,47 @@
+# Copys y prompts por imagen
+
+Diagnóstico Electrónico y Electricidad de Motocicletas para Mecánicos · Prof. José Luis Orozco Cuautle
+
+CTA único: **Escribe MOTO por WhatsApp** · $1,799 MXN
+
+| Archivo | Texto principal | Título | Descripción | Hashtags |
+|---|---|---|---|---|
+| A_Anuncios/A1_dolor_1080x1350.png | ¿Cambiaste el regulador y la moto sigue sin cargar? Mide antes de cambiar: te enseñamos el método en 12 clases en vivo. | Diagnóstico eléctrico de motos | Escribe MOTO por WhatsApp | #MecanicaDeMotos #ElectricidadDeMotos #TallerDeMotos #DiagnosticoAutomotriz #ElectronicaYServicio |
+| A_Anuncios/A1_dolor_1080x1920.png | ¿Cambiaste el regulador y la moto sigue sin cargar? Mide antes de cambiar: te enseñamos el método en 12 clases en vivo. | Diagnóstico eléctrico de motos | Escribe MOTO por WhatsApp | #MecanicaDeMotos #ElectricidadDeMotos #TallerDeMotos #DiagnosticoAutomotriz #ElectronicaYServicio |
+| A_Anuncios/A1_dolor_1080x1080.png | ¿Cambiaste el regulador y la moto sigue sin cargar? Mide antes de cambiar: te enseñamos el método en 12 clases en vivo. | Diagnóstico eléctrico de motos | Escribe MOTO por WhatsApp | #MecanicaDeMotos #ElectricidadDeMotos #TallerDeMotos #DiagnosticoAutomotriz #ElectronicaYServicio |
+| A_Anuncios/A1_dolor_1200x628.png | ¿Cambiaste el regulador y la moto sigue sin cargar? Mide antes de cambiar: te enseñamos el método en 12 clases en vivo. | Diagnóstico eléctrico de motos | Escribe MOTO por WhatsApp | #MecanicaDeMotos #ElectricidadDeMotos #TallerDeMotos #DiagnosticoAutomotriz #ElectronicaYServicio |
+| A_Anuncios/A2_dinero_1080x1350.png | Cada vez hay más motos en México y pocos mecánicos que diagnostican su electricidad. Especialízate en 12 clases en vivo. | Especialízate en motos | Curso en vivo · $1,799 MXN | #MotosMexico #MecanicoDeMotos #CursoDeMecanica #ElectricidadAutomotriz #ElectronicaYServicio |
+| A_Anuncios/A2_dinero_1080x1920.png | Cada vez hay más motos en México y pocos mecánicos que diagnostican su electricidad. Especialízate en 12 clases en vivo. | Especialízate en motos | Curso en vivo · $1,799 MXN | #MotosMexico #MecanicoDeMotos #CursoDeMecanica #ElectricidadAutomotriz #ElectronicaYServicio |
+| A_Anuncios/A2_dinero_1080x1080.png | Cada vez hay más motos en México y pocos mecánicos que diagnostican su electricidad. Especialízate en 12 clases en vivo. | Especialízate en motos | Curso en vivo · $1,799 MXN | #MotosMexico #MecanicoDeMotos #CursoDeMecanica #ElectricidadAutomotriz #ElectronicaYServicio |
+| A_Anuncios/A2_dinero_1200x628.png | Cada vez hay más motos en México y pocos mecánicos que diagnostican su electricidad. Especialízate en 12 clases en vivo. | Especialízate en motos | Curso en vivo · $1,799 MXN | #MotosMexico #MecanicoDeMotos #CursoDeMecanica #ElectricidadAutomotriz #ElectronicaYServicio |
+| A_Anuncios/A3_resultado_1080x1350.png | Batería, carga, estator y regulador: 4 pruebas en orden y dejas de cambiar piezas buenas. Aprende el método completo. | 4 pruebas, cero adivinanzas | 12 clases en vivo | #SistemaDeCarga #Estator #ReguladorDeVoltaje #TallerDeMotos #ElectronicaYServicio |
+| A_Anuncios/A3_resultado_1080x1920.png | Batería, carga, estator y regulador: 4 pruebas en orden y dejas de cambiar piezas buenas. Aprende el método completo. | 4 pruebas, cero adivinanzas | 12 clases en vivo | #SistemaDeCarga #Estator #ReguladorDeVoltaje #TallerDeMotos #ElectronicaYServicio |
+| A_Anuncios/A3_resultado_1080x1080.png | Batería, carga, estator y regulador: 4 pruebas en orden y dejas de cambiar piezas buenas. Aprende el método completo. | 4 pruebas, cero adivinanzas | 12 clases en vivo | #SistemaDeCarga #Estator #ReguladorDeVoltaje #TallerDeMotos #ElectronicaYServicio |
+| A_Anuncios/A3_resultado_1200x628.png | Batería, carga, estator y regulador: 4 pruebas en orden y dejas de cambiar piezas buenas. Aprende el método completo. | 4 pruebas, cero adivinanzas | 12 clases en vivo | #SistemaDeCarga #Estator #ReguladorDeVoltaje #TallerDeMotos #ElectronicaYServicio |
+| B_Carrusel/B1_portada_1080x1350.png | 5 pruebas eléctricas que todo mecánico de motos debe dominar, con valores típicos. Guárdalo y compártelo con tu ayudante. | 5 pruebas que debes dominar | Curso en vivo · $1,799 MXN | #MecanicaDeMotos #Multimetro #TallerDeMotos #ElectricidadDeMotos #ElectronicaYServicio |
+| B_Carrusel/B2_tip_1_1080x1350.png | 5 pruebas eléctricas que todo mecánico de motos debe dominar, con valores típicos. Guárdalo y compártelo con tu ayudante. | 5 pruebas que debes dominar | Curso en vivo · $1,799 MXN | #MecanicaDeMotos #Multimetro #TallerDeMotos #ElectricidadDeMotos #ElectronicaYServicio |
+| B_Carrusel/B3_tip_2_1080x1350.png | 5 pruebas eléctricas que todo mecánico de motos debe dominar, con valores típicos. Guárdalo y compártelo con tu ayudante. | 5 pruebas que debes dominar | Curso en vivo · $1,799 MXN | #MecanicaDeMotos #Multimetro #TallerDeMotos #ElectricidadDeMotos #ElectronicaYServicio |
+| B_Carrusel/B4_tip_3_1080x1350.png | 5 pruebas eléctricas que todo mecánico de motos debe dominar, con valores típicos. Guárdalo y compártelo con tu ayudante. | 5 pruebas que debes dominar | Curso en vivo · $1,799 MXN | #MecanicaDeMotos #Multimetro #TallerDeMotos #ElectricidadDeMotos #ElectronicaYServicio |
+| B_Carrusel/B5_tip_4_1080x1350.png | 5 pruebas eléctricas que todo mecánico de motos debe dominar, con valores típicos. Guárdalo y compártelo con tu ayudante. | 5 pruebas que debes dominar | Curso en vivo · $1,799 MXN | #MecanicaDeMotos #Multimetro #TallerDeMotos #ElectricidadDeMotos #ElectronicaYServicio |
+| B_Carrusel/B6_tip_5_1080x1350.png | 5 pruebas eléctricas que todo mecánico de motos debe dominar, con valores típicos. Guárdalo y compártelo con tu ayudante. | 5 pruebas que debes dominar | Curso en vivo · $1,799 MXN | #MecanicaDeMotos #Multimetro #TallerDeMotos #ElectricidadDeMotos #ElectronicaYServicio |
+| B_Carrusel/B7_cierre_1080x1350.png | 5 pruebas eléctricas que todo mecánico de motos debe dominar, con valores típicos. Guárdalo y compártelo con tu ayudante. | 5 pruebas que debes dominar | Curso en vivo · $1,799 MXN | #MecanicaDeMotos #Multimetro #TallerDeMotos #ElectricidadDeMotos #ElectronicaYServicio |
+| C_Lead_Magnet/C_arbol_diagnostico_1080x1350.png | ¿No carga, no arranca o se descarga? Encuentra la falla en 10 minutos con el Árbol de Diagnóstico Eléctrico. Gratis. | Árbol de diagnóstico gratis | Sin registro | #DiagnosticoDeMotos #MecanicoDeMotos #Herramientagratis #TallerDeMotos #ElectronicaYServicio |
+| C_Lead_Magnet/C_arbol_diagnostico_1080x1920.png | ¿No carga, no arranca o se descarga? Encuentra la falla en 10 minutos con el Árbol de Diagnóstico Eléctrico. Gratis. | Árbol de diagnóstico gratis | Sin registro | #DiagnosticoDeMotos #MecanicoDeMotos #Herramientagratis #TallerDeMotos #ElectronicaYServicio |
+| C_Lead_Magnet/C_arbol_diagnostico_1200x628.png | ¿No carga, no arranca o se descarga? Encuentra la falla en 10 minutos con el Árbol de Diagnóstico Eléctrico. Gratis. | Árbol de diagnóstico gratis | Sin registro | #DiagnosticoDeMotos #MecanicoDeMotos #Herramientagratis #TallerDeMotos #ElectronicaYServicio |
+| D_YouTube_y_OG/D_miniatura_youtube_1280x720.png | Sistema de carga de motos: el método de 4 pruebas | No carga: 4 pruebas | Video en YouTube | #SistemaDeCarga #Motos #Estator #Regulador #ElectronicaYServicio |
+| D_YouTube_y_OG/og-imagen_1200x630.jpg | Curso en vivo de diagnóstico eléctrico de motos para mecánicos: 12 clases, 18 horas, $1,799 MXN. | Diagnóstico eléctrico de motos | Escribe MOTO por WhatsApp | #CursoDeMotos #MecanicaDeMotos #ElectricidadDeMotos #TallerDeMotos #ElectronicaYServicio |
+
+## Prompts de IA para fotos realistas (opcional)
+
+Los visuales técnicos de las piezas ya están dibujados en SVG. Si prefieres foto realista, genera la imagen con estos prompts y colócala en el área central.
+
+**Anuncio A1 (dolor):** Fotografía realista de un mecánico en un taller de motos mexicano midiendo con un multímetro digital los bornes de la batería de una moto de trabajo de 150 cc, encuadre medio cerrado a las manos y el multímetro, luz cálida de lámpara de taller y luz de día lateral, estilo fotoperiodístico con profundidad de campo baja, fondo de taller desenfocado con herramientas, proporción 4:5, sin texto ni logotipos.
+
+**Anuncio A2 (dinero):** Fotografía realista de varias motocicletas de trabajo estacionadas frente a un taller de barrio en una ciudad de México al atardecer, encuadre general, luz dorada, estilo documental, sin personas identificables, proporción 4:5, sin texto ni logotipos.
+
+**Anuncio A3 (resultado):** Fotografía realista de una pantalla de osciloscopio portátil mostrando una señal de rizo de carga junto a un estator de motocicleta desmontado sobre una mesa de trabajo metálica, encuadre cenital, iluminación de estudio suave, estilo técnico limpio, proporción 1:1, sin texto ni logotipos.
+
+**Lead magnet:** Fotografía realista de un celular en la mano de un mecánico mostrando una aplicación con preguntas Sí/No, al fondo una moto en el taller, encuadre sobre el hombro, luz natural, estilo cotidiano, proporción 9:16, pantalla en blanco para insertar captura, sin texto ni logotipos.
+
+**Miniatura YouTube:** Fotografía realista de primer plano de un conector eléctrico de motocicleta derretido sostenido con pinzas, fondo oscuro de taller, iluminación dramática lateral, alto contraste, proporción 16:9, espacio libre a la izquierda para texto, sin texto ni logotipos.
+

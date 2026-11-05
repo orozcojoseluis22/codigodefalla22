@@ -1,0 +1,12 @@
+Imágenes con tamaño exacto: 25
+Video V1_9x16_dolor.mp4: h264 1080x1920 yuv420p 30/1 fps · 28.00 s · audio aac · 2.2 MB
+Video V2_1x1_dinero.mp4: h264 1080x1080 yuv420p 30/1 fps · 28.00 s · audio aac · 1.9 MB
+Video V3_16x9_resultado.mp4: h264 1920x1080 yuv420p 30/1 fps · 30.00 s · audio aac · 2.5 MB
+05_Plataforma/No_aplica.md · precios encontrados: — · CTA: no
+06_Landing_Page/index.html · precios encontrados: $1,799 $1,200 · CTA: sí
+07_Lead_Magnet/index.html · precios encontrados: $1,799 · CTA: no
+08_Animaciones/fuentes/V1_9x16_dolor.html · precios encontrados: $1,799 · CTA: sí
+08_Animaciones/fuentes/V2_1x1_dinero.html · precios encontrados: $1,060 $1,460 $1,799 · CTA: sí
+08_Animaciones/fuentes/V3_16x9_resultado.html · precios encontrados: $1,799 · CTA: sí
+09_Imagenes_Publicitarias/Copys_y_prompts_IA.md · precios encontrados: $1,799 · CTA: sí
+Archivos por tipo: docx:15 pdf:15 pptx:12 png:43 svg:17 xlsx:2 md:2 html:5 jpg:4 mp4:3

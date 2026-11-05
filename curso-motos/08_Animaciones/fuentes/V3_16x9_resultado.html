@@ -1,0 +1,211 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-400.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-500.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-600.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-700.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/Barlow-800.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/BarlowCondensed-500.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/BarlowCondensed-600.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/BarlowCondensed-700.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/BarlowCondensed-800.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/IBMPlexMono-400.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/IBMPlexMono-500.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/IBMPlexMono-600.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../../_codigo_fuente/assets/fonts/IBMPlexMono-700.ttf) format('truetype');
+}
+html,body{margin:0;padding:0;background:transparent}*{box-sizing:border-box;margin:0;padding:0}
+.stage{position:relative;overflow:hidden;background:#2B3036;font-family:'Barlow',sans-serif;color:#fff;background-image:linear-gradient(rgba(255,255,255,.045) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.045) 2px,transparent 2px);background-size:40px 40px}
+.stripe{position:absolute;left:0;top:0;bottom:0;background:#FFC20E}
+.prog{position:absolute;height:8px;background:rgba(255,255,255,.12);border-radius:8px;overflow:hidden}.prog i{display:block;height:100%;width:0;background:#FFC20E}
+.badge{position:absolute;border-radius:50%;background:#1E2227;border:solid #FFC20E;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Barlow Condensed';font-weight:800;color:#FFC20E;line-height:1;z-index:3}
+.badge small{font-family:'IBM Plex Mono';font-weight:600;color:#EEF0F2}
+.scene{position:absolute;inset:0;opacity:0}
+.head{position:absolute;display:flex;flex-direction:column;gap:14px}
+.eye{font-family:'IBM Plex Mono';font-weight:600;color:#FFC20E;letter-spacing:.08em}
+.hook{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;line-height:.98}
+.hook em{font-style:normal;color:#FFC20E}.hook em.n{white-space:nowrap}
+.vis{position:absolute;display:flex;align-items:center;justify-content:center;transform-origin:center}
+.vis svg{width:100%;height:100%}
+.vals{position:absolute;display:flex;gap:4%;justify-content:center}
+.val{flex:1;background:#1E2227;border:2px solid #4A525B;border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.val b{font-family:'IBM Plex Mono';font-weight:700;color:#FFC20E;line-height:1.1}
+.val span{font-weight:600;color:#D7DBE0;text-transform:uppercase;letter-spacing:.04em}
+.steps{position:absolute;display:flex;gap:16px}
+.st{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed';font-weight:800;font-size:34px;text-transform:uppercase;color:#6B737C;background:#1E2227;border:2px solid #3A4047;border-radius:12px;padding:10px 16px}
+.st i{font-style:normal;width:40px;height:40px;border-radius:50%;background:#3A4047;color:#1E2227;display:flex;align-items:center;justify-content:center}
+.st.on{color:#fff;border-color:#FFC20E}.st.on i{background:#FFC20E}
+.bar{position:absolute;left:0;right:0;background:#1E2227;border-top:6px solid #FFC20E;display:flex;align-items:center;justify-content:space-between;z-index:4}
+.bar .t{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;line-height:1.1;color:#EEF0F2}.bar .t b{color:#FFC20E}
+.bar .btn{background:#FFC20E;color:#1E2227;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;border-radius:12px;padding:18px 26px;white-space:nowrap}
+.ex{position:absolute;font-family:'IBM Plex Mono';font-size:18px;color:#AEB4BB;z-index:4}</style></head><body><div class="stage" style="width:1920px;height:1080px">
+    <div class="stripe" style="width:26px"></div>
+    <div class="prog" style="left:46px;right:20px;top:60px"><i id="pb"></i></div>
+    <div class="badge" style="left:1760px;top:60px;width:120px;height:120px;font-size:43px;border-width:6px">E·S<small style="font-size:12px">ELECTRÓNICA</small><small style="font-size:12px">Y SERVICIO</small></div>
+    <div class="scene" id="s0" data-a="0" data-b="3">
+      <div class="head" style="left:90px;top:80px;width:820px;height:420px"><div class="eye" style="font-size:30px">SISTEMA DE CARGA</div><div class="hook" style="font-size:104px">No carga: <em>4 pruebas</em></div></div>
+      <div class="vis" style="left:980px;top:200px;width:800px;height:560px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="780" height="540" rx="26" fill="#2B3036" stroke="#4A525B" stroke-width="4"/>
+  <text x="40" y="58" font-family="'IBM Plex Mono',monospace" font-size="22" font-weight="600" fill="#AEB4BB">CH1 · RIZO · HUECO = DIODO ABIERTO</text>
+  <g transform="translate(20 80)"><rect width="760" height="420" rx="12" fill="#0B1A12"/><line x1="0" y1="0" x2="0" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="76" y1="0" x2="76" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="152" y1="0" x2="152" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="228" y1="0" x2="228" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="304" y1="0" x2="304" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="380" y1="0" x2="380" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="456" y1="0" x2="456" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="532" y1="0" x2="532" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="608" y1="0" x2="608" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="684" y1="0" x2="684" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="760" y1="0" x2="760" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="0" x2="760" y2="0" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="70" x2="760" y2="70" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="140" x2="760" y2="140" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="210" x2="760" y2="210" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="280" x2="760" y2="280" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="350" x2="760" y2="350" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="420" x2="760" y2="420" stroke="#1F3A28" stroke-width="2"/><path d="M0 210 Q15 170 32 200 Q47 170 64 200 Q79 120 96 210 Q111 170 128 200 Q143 170 160 200 Q175 120 192 210 Q207 170 224 200 Q239 170 256 200 Q271 120 288 210 Q303 170 320 200 Q335 170 352 200 Q367 120 384 210 Q399 170 416 200 Q431 170 448 200 Q463 120 480 210 Q495 170 512 200 Q527 170 544 200 Q559 120 576 210 Q591 170 608 200 Q623 170 640 200 Q655 120 672 210 Q687 170 704 200 Q719 170 736 200 Q751 120 768 210" fill="none" stroke="#5CFF8A" stroke-width="5" stroke-linejoin="round"/></g>
+  <circle cx="100" cy="250" r="0" fill="none"/>
+</svg></div>
+      
+    </div><div class="scene" id="s1" data-a="3" data-b="9">
+      <div class="head" style="left:90px;top:80px;width:820px;height:420px"><div class="eye" style="font-size:30px">PRUEBA 1</div><div class="hook" style="font-size:104px">Batería <em>cargada y sana</em></div></div>
+      <div class="vis" style="left:980px;top:200px;width:800px;height:560px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg"><rect x="170" y="150" width="460" height="300" rx="24" fill="#2B3036" stroke="#4A525B" stroke-width="6"/><rect x="230" y="110" width="80" height="44" fill="#C9CED4" stroke="#1E2227" stroke-width="4"/><rect x="490" y="110" width="80" height="44" fill="#C9CED4" stroke="#1E2227" stroke-width="4"/><text x="270" y="220" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="70" font-weight="800" fill="#E5484D">+</text><text x="530" y="220" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="70" font-weight="800" fill="#fff">−</text><rect x="250" y="270" width="300" height="110" rx="12" fill="#C9D6B0" stroke="#1E2227" stroke-width="5"/><text x="400" y="350" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="64" font-weight="700" fill="#1E2A12">12.6 V</text></svg></div>
+      <div class="vals" style="left:90px;top:640px;width:820px;height:130px"><div class="val"><b style="font-size:48px">≥ 12.6 V</b><span style="font-size:22px">en reposo</span></div><div class="val"><b style="font-size:48px">≈ 9.5–10 V</b><span style="font-size:22px">mínimo al dar marcha</span></div></div>
+    </div><div class="scene" id="s2" data-a="9" data-b="15">
+      <div class="head" style="left:90px;top:80px;width:820px;height:420px"><div class="eye" style="font-size:30px">PRUEBA 2</div><div class="hook" style="font-size:104px">Carga a <em>5,000 rpm</em></div></div>
+      <div class="vis" style="left:980px;top:200px;width:800px;height:560px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="40" width="300" height="470" rx="34" fill="#FFC20E" stroke="#1E2227" stroke-width="6"/>
+  <rect x="70" y="80" width="240" height="120" rx="12" fill="#C9D6B0" stroke="#1E2227" stroke-width="5"/>
+  <text x="190" y="158" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="58" font-weight="700" fill="#1E2A12">14.2 V</text>
+  <text x="190" y="190" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="18" font-weight="600" fill="#1E2A12">5,000 RPM · OK</text>
+  <circle cx="190" cy="320" r="78" fill="#2B3036" stroke="#1E2227" stroke-width="5"/><path d="M190 320 L230 270" stroke="#FFC20E" stroke-width="10" stroke-linecap="round"/>
+  <text x="190" y="230" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="20" font-weight="700" fill="#1E2227">V⎓</text>
+  <circle cx="120" cy="450" r="20" fill="#1E2227"/><circle cx="260" cy="450" r="20" fill="#E5484D"/>
+  <text x="120" y="495" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="16" font-weight="700" fill="#1E2227">COM</text><text x="260" y="495" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="16" font-weight="700" fill="#1E2227">V</text>
+  <path d="M260 450 C 380 470, 430 300, 560 250" fill="none" stroke="#E5484D" stroke-width="10" stroke-linecap="round"/>
+  <path d="M120 450 C 300 560, 520 420, 690 250" fill="none" stroke="#111" stroke-width="10" stroke-linecap="round"/>
+  <rect x="500" y="250" width="250" height="170" rx="14" fill="#2B3036" stroke="#4A525B" stroke-width="5"/>
+  <rect x="535" y="225" width="45" height="28" fill="#C9CED4" stroke="#1E2227" stroke-width="3"/><rect x="670" y="225" width="45" height="28" fill="#C9CED4" stroke="#1E2227" stroke-width="3"/>
+  <text x="557" y="300" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="44" font-weight="800" fill="#E5484D">+</text><text x="692" y="300" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="44" font-weight="800" fill="#fff">−</text>
+  <text x="625" y="380" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="34" font-weight="800" fill="#FFC20E">BATERÍA 12 V</text>
+  <g transform="translate(700 40) scale(0.9)"><rect x="0" y="0" width="54" height="150" rx="27" fill="#1E2227" stroke="#4A525B" stroke-width="3"/><circle cx="27" cy="27" r="17" fill="#3A4047"/><circle cx="27" cy="75" r="17" fill="#3A4047"/><circle cx="27" cy="123" r="17" fill="#2FB344"/></g>
+</svg></div>
+      <div class="vals" style="left:90px;top:640px;width:820px;height:130px"><div class="val"><b style="font-size:48px">13.5–14.8 V</b><span style="font-size:22px">típico</span></div><div class="val"><b style="font-size:48px">> 15 V</b><span style="font-size:22px">sobrecarga</span></div></div>
+    </div><div class="scene" id="s3" data-a="15" data-b="21">
+      <div class="head" style="left:90px;top:80px;width:820px;height:420px"><div class="eye" style="font-size:30px">PRUEBA 3</div><div class="hook" style="font-size:104px">Estator <em>estático y dinámico</em></div></div>
+      <div class="vis" style="left:980px;top:200px;width:800px;height:560px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="780" height="540" rx="26" fill="#2B3036" stroke="#4A525B" stroke-width="4"/>
+  <text x="40" y="58" font-family="'IBM Plex Mono',monospace" font-size="22" font-weight="600" fill="#AEB4BB">CH1 · VAC ENTRE FASES · PAREJAS</text>
+  <g transform="translate(20 80)"><rect width="760" height="420" rx="12" fill="#0B1A12"/><line x1="0" y1="0" x2="0" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="76" y1="0" x2="76" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="152" y1="0" x2="152" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="228" y1="0" x2="228" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="304" y1="0" x2="304" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="380" y1="0" x2="380" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="456" y1="0" x2="456" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="532" y1="0" x2="532" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="608" y1="0" x2="608" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="684" y1="0" x2="684" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="760" y1="0" x2="760" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="0" x2="760" y2="0" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="70" x2="760" y2="70" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="140" x2="760" y2="140" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="210" x2="760" y2="210" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="280" x2="760" y2="280" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="350" x2="760" y2="350" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="420" x2="760" y2="420" stroke="#1F3A28" stroke-width="2"/><path d="M0 210 Q15 170 32 200 Q47 170 64 200 Q79 170 96 200 Q111 170 128 200 Q143 170 160 200 Q175 170 192 200 Q207 170 224 200 Q239 170 256 200 Q271 170 288 200 Q303 170 320 200 Q335 170 352 200 Q367 170 384 200 Q399 170 416 200 Q431 170 448 200 Q463 170 480 200 Q495 170 512 200 Q527 170 544 200 Q559 170 576 200 Q591 170 608 200 Q623 170 640 200 Q655 170 672 200 Q687 170 704 200 Q719 170 736 200 Q751 170 768 200" fill="none" stroke="#5CFF8A" stroke-width="5" stroke-linejoin="round"/></g>
+  
+</svg></div>
+      <div class="vals" style="left:90px;top:640px;width:820px;height:130px"><div class="val"><b style="font-size:48px">Parejas</b><span style="font-size:22px">fases en VAC</span></div><div class="val"><b style="font-size:48px">OL</b><span style="font-size:22px">fase a tierra</span></div></div>
+    </div><div class="scene" id="s4" data-a="21" data-b="26">
+      <div class="head" style="left:90px;top:80px;width:820px;height:420px"><div class="eye" style="font-size:30px">PRUEBA 4</div><div class="hook" style="font-size:104px">Regulador, <em>tierra y rizo</em></div></div>
+      <div class="vis" style="left:980px;top:200px;width:800px;height:560px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="780" height="540" rx="26" fill="#2B3036" stroke="#4A525B" stroke-width="4"/>
+  <text x="40" y="58" font-family="'IBM Plex Mono',monospace" font-size="22" font-weight="600" fill="#AEB4BB">CH1 · RIZO DE CARGA · SANO</text>
+  <g transform="translate(20 80)"><rect width="760" height="420" rx="12" fill="#0B1A12"/><line x1="0" y1="0" x2="0" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="76" y1="0" x2="76" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="152" y1="0" x2="152" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="228" y1="0" x2="228" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="304" y1="0" x2="304" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="380" y1="0" x2="380" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="456" y1="0" x2="456" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="532" y1="0" x2="532" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="608" y1="0" x2="608" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="684" y1="0" x2="684" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="760" y1="0" x2="760" y2="420" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="0" x2="760" y2="0" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="70" x2="760" y2="70" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="140" x2="760" y2="140" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="210" x2="760" y2="210" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="280" x2="760" y2="280" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="350" x2="760" y2="350" stroke="#1F3A28" stroke-width="2"/><line x1="0" y1="420" x2="760" y2="420" stroke="#1F3A28" stroke-width="2"/><path d="M0 210 Q15 170 32 200 Q47 170 64 200 Q79 170 96 200 Q111 170 128 200 Q143 170 160 200 Q175 170 192 200 Q207 170 224 200 Q239 170 256 200 Q271 170 288 200 Q303 170 320 200 Q335 170 352 200 Q367 170 384 200 Q399 170 416 200 Q431 170 448 200 Q463 170 480 200 Q495 170 512 200 Q527 170 544 200 Q559 170 576 200 Q591 170 608 200 Q623 170 640 200 Q655 170 672 200 Q687 170 704 200 Q719 170 736 200 Q751 170 768 200" fill="none" stroke="#5CFF8A" stroke-width="5" stroke-linejoin="round"/></g>
+  
+</svg></div>
+      <div class="vals" style="left:90px;top:640px;width:820px;height:130px"><div class="val"><b style="font-size:48px">&lt; 0.2 V</b><span style="font-size:22px">caída en tierra</span></div><div class="val"><b style="font-size:48px">Parejo</b><span style="font-size:22px">rizo sano</span></div></div>
+    </div><div class="scene" id="s5" data-a="26" data-b="30">
+      <div class="head" style="left:90px;top:80px;width:820px;height:420px"><div class="eye" style="font-size:30px">LO PRACTICAMOS EN VIVO</div><div class="hook" style="font-size:104px">Aprende el <em>método completo</em></div></div>
+      <div class="vis" style="left:980px;top:200px;width:800px;height:560px"><svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="250" y="10" width="300" height="540" rx="40" fill="#1E2227" stroke="#4A525B" stroke-width="6"/>
+  <rect x="268" y="40" width="264" height="480" rx="20" fill="#F2F3F5"/>
+  <rect x="268" y="40" width="264" height="80" rx="20" fill="#2B3036"/><text x="400" y="88" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="26" font-weight="800" fill="#FFC20E">ÁRBOL DE DIAGNÓSTICO</text>
+  <rect x="288" y="140" width="224" height="16" rx="8" fill="#D8DCE1"/><rect x="288" y="140" width="130" height="16" rx="8" fill="#FFC20E"/>
+  <text x="290" y="200" font-family="'Barlow Condensed',sans-serif" font-size="26" font-weight="800" fill="#1E2227">¿A 5,000 RPM SUBE</text><text x="290" y="230" font-family="'Barlow Condensed',sans-serif" font-size="26" font-weight="800" fill="#1E2227">A 13.5–14.8 V?</text>
+  <rect x="288" y="255" width="224" height="40" rx="8" fill="#FFF4CC"/><text x="300" y="282" font-family="'IBM Plex Mono',monospace" font-size="18" font-weight="700" fill="#1E2227">ESPERADO 13.5–14.8 V</text>
+  <rect x="288" y="315" width="105" height="56" rx="10" fill="#2FB344"/><text x="340" y="352" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="28" font-weight="800" fill="#fff">SÍ</text>
+  <rect x="407" y="315" width="105" height="56" rx="10" fill="#E5484D"/><text x="460" y="352" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="28" font-weight="800" fill="#fff">NO</text>
+  <rect x="288" y="395" width="224" height="105" rx="12" fill="#fff" stroke="#1E2227" stroke-width="3"/>
+  <circle cx="318" cy="430" r="12" fill="#3A4047"/><circle cx="348" cy="430" r="12" fill="#FFC20E"/><circle cx="378" cy="430" r="12" fill="#3A4047"/>
+  <text x="300" y="470" font-family="'IBM Plex Mono',monospace" font-size="15" font-weight="700" fill="#1E2227">RESULTADO + 3 PASOS</text><text x="300" y="490" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#525A63">Clase que lo resuelve</text>
+  <g transform="translate(40 120)"><rect x="0" y="0" width="170" height="250" rx="22" fill="#FFC20E" stroke="#1E2227" stroke-width="5"/><rect x="18" y="22" width="134" height="70" rx="8" fill="#C9D6B0" stroke="#1E2227" stroke-width="4"/><text x="85" y="72" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="34" font-weight="700" fill="#1E2A12">14.2</text><circle cx="85" cy="165" r="48" fill="#2B3036" stroke="#1E2227" stroke-width="4"/><path d="M85 165 L110 135" stroke="#FFC20E" stroke-width="7" stroke-linecap="round"/></g><g transform="translate(600 200)"><g transform="translate(0 0) scale(1.1)"><rect x="0" y="0" width="54" height="150" rx="27" fill="#1E2227" stroke="#4A525B" stroke-width="3"/><circle cx="27" cy="27" r="17" fill="#3A4047"/><circle cx="27" cy="75" r="17" fill="#FFC20E"/><circle cx="27" cy="123" r="17" fill="#3A4047"/></g></g>
+</svg></div>
+      <div class="vals" style="left:90px;top:640px;width:820px;height:130px"><div class="val"><b style="font-size:48px">12</b><span style="font-size:22px">clases en vivo</span></div><div class="val"><b style="font-size:48px">$1,799</b><span style="font-size:22px">MXN</span></div></div>
+    </div><div class="steps" style="left:90px;top:490px"><div class="st" id="st0"><i>1</i>Batería</div><div class="st" id="st1"><i>2</i>Carga</div><div class="st" id="st2"><i>3</i>Estator</div><div class="st" id="st3"><i>4</i>Regulador</div></div>
+    <div class="bar" style="top:900px;height:180px;padding:0 96px 0 112px"><div class="t" style="font-size:38px">Diagnóstico Eléctrico de Motos<br><b>12 clases en vivo · $1,799 MXN</b></div><div class="btn" id="cta" style="font-size:40px">Escribe MOTO por WhatsApp</div></div>
+    <div class="ex" style="left:46px;top:866px">Valores típicos · verifica con el manual del fabricante</div>
+  </div>
+  <script>
+  var DUR = 30;
+  function ease(x){ return x < 0 ? 0 : x > 1 ? 1 : 1 - Math.pow(1 - x, 3); }
+  window.seek = function(t){
+    document.getElementById("pb").style.width = (t / DUR * 100).toFixed(2) + "%";
+    document.querySelectorAll(".scene").forEach(function(s){
+      var a = +s.dataset.a, b = +s.dataset.b, last = b >= DUR;
+      var inn = ease((t - a) / 0.35), out = last ? 1 : 1 - ease((t - (b - 0.3)) / 0.3);
+      var o = Math.max(0, Math.min(inn, out)); if (t < a || t > b + 0.01) o = 0;
+      s.style.opacity = o;
+      var h = s.querySelector(".head"); h.style.transform = "translateY(" + ((1 - ease((t - a) / 0.45)) * 40).toFixed(1) + "px)";
+      var vis = s.querySelector(".vis"); vis.style.transform = "scale(" + (0.94 + 0.06 * ease((t - a - 0.1) / 0.6)).toFixed(3) + ")";
+      s.querySelectorAll(".val").forEach(function(v, i){ var k = ease((t - a - 0.5 - i * 0.25) / 0.4); v.style.opacity = k; v.style.transform = "translateY(" + ((1 - k) * 24).toFixed(1) + "px)"; });
+    });
+    var st = document.querySelectorAll(".st");
+    st.forEach(function(e, i){ var on = t >= [3, 9, 15, 21][i]; e.className = "st" + (on ? " on" : ""); });
+    var cta = document.getElementById("cta"); var pulse = t > DUR - 4 ? 1 + 0.04 * Math.sin((t - (DUR - 4)) * 6) : 1; cta.style.transform = "scale(" + pulse.toFixed(3) + ")";
+  };
+  window.seek(0);
+  </script></body></html>

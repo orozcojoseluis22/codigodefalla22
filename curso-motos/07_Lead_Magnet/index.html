@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<script>
+/* ===================== CONFIG · edita solo este bloque ===================== */
+window.CONFIG = {
+  whatsapp: "",           // 52 + 10 dígitos del taller/escuela (por confirmar)
+  enlaceCurso: "https://electronicayservicio.com/curso-diagnostico-motos",      // landing del curso
+  precio: 1799,                 // MXN
+  webhookUrl: ""                       // opcional: webhook entrante (ej. GoHighLevel). Si está vacío o falla, se usa WhatsApp
+};
+/* ========================================================================== */
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Árbol de Diagnóstico Eléctrico para Mecánicos de Motos: encuentra por qué una moto no carga, no arranca o se descarga en 10 minutos | Gratis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Encuentra por qué una moto no carga, no arranca o se descarga en 10 minutos. Herramienta gratis y sin registro para mecánicos de motos: prueba, valor esperado y resultado con semáforo.">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_MX"><meta property="og:title" content="Árbol de Diagnóstico Eléctrico para Mecánicos de Motos">
+<meta property="og:description" content="Encuentra por qué una moto no carga, no arranca o se descarga en 10 minutos. Gratis y sin registro."><meta property="og:image" content="https://electronicayservicio.com/arbol-diagnostico-motos/og-lead-magnet.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="628">
+<meta property="og:url" content="https://electronicayservicio.com/arbol-diagnostico-motos"><meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebApplication","name":"Árbol de Diagnóstico Eléctrico para Mecánicos de Motos","description":"Encuentra por qué una moto no carga, no arranca o se descarga en 10 minutos. Herramienta gratuita de diagnóstico paso a paso.","applicationCategory":"EducationalApplication","operatingSystem":"Web","inLanguage":"es-MX","url":"https://electronicayservicio.com/arbol-diagnostico-motos","offers":{"@type":"Offer","price":"0","priceCurrency":"MXN"},"provider":{"@type":"Organization","name":"Electrónica y Servicio","url":"https://electronicayservicio.com"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Es gratis de verdad?","acceptedAnswer":{"@type":"Answer","text":"Sí. No pide registro. Solo si quieres recibir tus resultados por WhatsApp te pedimos nombre y número, con tu consentimiento."}},{"@type":"Question","name":"¿Qué herramienta necesito?","acceptedAnswer":{"@type":"Answer","text":"Un multímetro digital. En algunos pasos ayuda una pinza amperimétrica, un adaptador de voltaje pico o un escáner; si no los tienes, el árbol te dice qué medir."}},{"@type":"Question","name":"¿Los valores sirven para cualquier moto?","acceptedAnswer":{"@type":"Answer","text":"Son valores típicos de referencia tomados de manuales de servicio. Verifica siempre con el manual del modelo exacto."}},{"@type":"Question","name":"¿Qué hago con el resultado?","acceptedAnswer":{"@type":"Answer","text":"Aplica las 3 recomendaciones, documenta con foto y, si quieres dominar el método completo, revisa la clase del curso que lo resuelve."}}]}]</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: herramienta de banco de pruebas: banda de taller arriba, tarjeta de prueba al centro y tarjeta de resultado para captura. */
+:root{
+  --bg:#F2F3F5; --surface:#FFFFFF; --ink:#1E2227; --muted:#525A63; --line:#D8DCE1; --tint:#FFF4CC;
+  --band:#1E2227; --band-ink:#EEF0F2; --band-muted:#AEB4BB; --accent:#FFC20E; --on-accent:#1E2227;
+  --red:#C9363C; --green:#1F8A35; --blue:#215FCB; --sem-r:#E5484D; --sem-y:#FFC20E; --sem-g:#2FB344;
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif; --f-body:"Barlow",Arial,sans-serif; --f-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171A;--surface:#1F2327;--ink:#EEF0F2;--muted:#B3B9C0;--line:#353B42;--tint:#3A3116;--band:#0E1013;--band-ink:#EEF0F2;--band-muted:#AEB4BB;--red:#F06A6F;--green:#47C964;--blue:#6BA4FF;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14171A;--surface:#1F2327;--ink:#EEF0F2;--muted:#B3B9C0;--line:#353B42;--tint:#3A3116;--band:#0E1013;--band-ink:#EEF0F2;--band-muted:#AEB4BB;--red:#F06A6F;--green:#47C964;--blue:#6BA4FF;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;margin:0}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-data);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-data);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 18px;border-radius:8px;font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:.02em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;background:none;color:inherit}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{border-color:currentColor}
+.btn-yes{background:var(--sem-g);color:#fff}.btn-no{background:var(--sem-r);color:#fff}
+.btn:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+header.hero{background:var(--band);color:var(--band-ink);padding-block:34px 30px}
+header.hero h1{font-size:clamp(34px,5.6vw,58px);text-transform:uppercase;font-weight:800;max-width:22ch}
+header.hero h1 em{font-style:normal;color:var(--accent)}
+header.hero p{color:#D7DBE0;margin-top:12px;max-width:60ch}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badges span{font-family:var(--f-data);font-size:13px;border:1px solid #4A525B;border-radius:999px;padding:6px 12px}
+.badges b{color:var(--accent);font-weight:600}
+.tape{height:12px;background:repeating-linear-gradient(-45deg,var(--accent) 0 16px,#1E2227 16px 32px)}
+main{padding-block:28px 48px}
+.prog{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.bar{flex:1;height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.prog span{font-family:var(--f-data);font-size:13px;color:var(--muted);white-space:nowrap}
+.tool{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;min-width:0}
+.sym{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.sym button{display:flex;gap:12px;align-items:center;text-align:left;padding:16px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:600 17px/1.25 var(--f-body);cursor:pointer;min-width:0}
+.sym button:hover{border-color:var(--ink)}
+.sym .n{font-family:var(--f-data);font-size:13px;color:var(--muted);flex:none;width:34px}
+.step h2{font-size:clamp(26px,3.6vw,34px);margin-top:6px}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:8px 14px;margin-top:16px;font-size:16px}
+.kv dt{font-family:var(--f-data);font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-top:3px}
+.kv dd{margin:0;min-width:0}
+.esperado{display:inline-block;background:var(--tint);border-radius:6px;padding:2px 10px;font-family:var(--f-data);font-weight:600}
+.ans{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.nav{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.link{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:500 15px var(--f-body);padding:4px 0}
+.side{display:flex;flex-direction:column;gap:14px}
+.ruta{margin:0;padding-left:20px;font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.ruta b{color:var(--ink)}
+.card{border:3px solid var(--ink);border-radius:12px;overflow:hidden;background:var(--surface)}
+.card-h{background:var(--band);color:var(--band-ink);padding:12px 16px;display:flex;justify-content:space-between;gap:10px;font-family:var(--f-data);font-size:12px;letter-spacing:.06em}
+.card-h b{color:var(--accent)}
+.card-b{padding:18px;display:flex;flex-direction:column;gap:12px}
+.semrow{display:flex;align-items:center;gap:14px}
+.semaf{display:flex;gap:6px;background:#1E2227;padding:7px;border-radius:99px;flex:none}
+.semaf i{width:22px;height:22px;border-radius:50%;background:#3A4047;display:block}
+.semaf i.on.r{background:var(--sem-r)}.semaf i.on.y{background:var(--sem-y)}.semaf i.on.g{background:var(--sem-g)}
+.card-b h3{font-size:26px}
+.card-b ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.clase{font-family:var(--f-data);font-size:14px;background:var(--tint);padding:8px 10px;border-radius:6px}
+.example{font-family:var(--f-data);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.next{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;margin-top:28px}
+.next .panel h2{font-size:30px;text-transform:uppercase}
+form.cap{display:flex;flex-direction:column;gap:10px}
+form.cap label{font-size:15px;font-weight:600}
+form.cap input[type=text],form.cap input[type=tel]{width:100%;min-height:46px;border:2px solid var(--line);border-radius:8px;padding:8px 12px;font:500 17px var(--f-body);background:var(--bg);color:var(--ink)}
+.consent{display:flex;gap:8px;align-items:flex-start;font-size:14px;font-weight:500!important;color:var(--muted)}
+.consent input{margin-top:4px;width:18px;height:18px;flex:none}
+.msg{font-size:14px;min-height:1em}
+.msg.err{color:var(--red)}.msg.ok{color:var(--green)}
+.faq{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.faq summary{padding:14px 16px;cursor:pointer;font-weight:600}
+.faq p{padding:0 16px 14px;color:var(--muted)}
+footer{padding-block:30px 40px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-direction:column;gap:8px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-size:15px;z-index:50;max-width:calc(100% - 32px)}
+@media (max-width:860px){.tool,.next{grid-template-columns:minmax(0,1fr)}.kv{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.sym{grid-template-columns:minmax(0,1fr)}body{font-size:16px}.ans .btn{flex:1 1 100%}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow" style="color:var(--band-muted)">Herramienta gratis · Electrónica y Servicio</p>
+  <h1 style="margin-top:10px">Árbol de diagnóstico eléctrico: <em>encuentra la falla</em> en 10 minutos</h1>
+  <p>Para mecánicos de motos. Elige el síntoma, haz la prueba que te pide cada paso con tu multímetro y responde Sí o No. Al final tienes tu resultado con semáforo y 3 recomendaciones.</p>
+  <div class="badges"><span><b>100 % gratis</b>, sin registro</span><span><b>6</b> fallas frecuentes</span><span>Valores típicos con <b>fuente</b></span></div>
+</div></header>
+<div class="tape" aria-hidden="true"></div>
+<main><div class="wrap">
+  <div class="prog" aria-label="Progreso"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar"><i id="barI"></i></div><span id="progT">Paso 0 · elige un síntoma</span></div>
+  <div class="tool">
+    <section class="panel" id="stage" aria-live="polite">
+      <div id="vSym">
+        <p class="eyebrow">Paso 1 · ¿Qué le pasa a la moto?</p>
+        <h2 style="font-size:30px;margin-top:6px">Elige el síntoma que reporta el cliente</h2>
+        <div class="sym"><button type="button" data-tree="no-carga" id="sym_no-carga"><span class="n">01</span><span>La batería no carga o se descarga rodando</span></button><button type="button" data-tree="no-marcha" id="sym_no-marcha"><span class="n">02</span><span>No da marcha al presionar el botón</span></button><button type="button" data-tree="sin-chispa" id="sym_sin-chispa"><span class="n">03</span><span>El motor gira pero no hay chispa</span></button><button type="button" data-tree="se-descarga" id="sym_se-descarga"><span class="n">04</span><span>La batería amanece descargada con la moto parada</span></button><button type="button" data-tree="inyeccion" id="sym_inyeccion"><span class="n">05</span><span>Moto de inyección no arranca, se apaga o tiene testigo</span></button><button type="button" data-tree="focos" id="sym_focos"><span class="n">06</span><span>Focos o LED se funden o las luces parpadean</span></button></div>
+      </div>
+      <div id="vStep" hidden class="step">
+        <p class="eyebrow" id="stTree"></p>
+        <h2 id="stQ"></h2>
+        <dl class="kv"><dt>Cómo medir</dt><dd id="stComo"></dd><dt>Valor esperado</dt><dd><span class="esperado" id="stEsp"></span></dd></dl>
+        <div class="ans"><button class="btn btn-yes" type="button" id="bSi">Sí, dentro de lo esperado</button><button class="btn btn-no" type="button" id="bNo">No</button></div>
+        <div class="nav"><button class="link" type="button" id="bBack">← Paso anterior</button><button class="link" type="button" id="bReset">Empezar de nuevo</button></div>
+      </div>
+      <div id="vRes" hidden>
+        <p class="eyebrow">Resultado</p>
+        <h2 style="font-size:30px;margin-top:6px" id="rTitle"></h2>
+        <p style="margin-top:8px;color:var(--muted)">Aplica las recomendaciones, documenta con foto y guarda la tarjeta de resultado (puedes tomarle captura de pantalla).</p>
+        <div class="nav"><button class="link" type="button" id="bBack2">← Revisar el último paso</button><button class="link" type="button" id="bReset2">Diagnosticar otra moto</button></div>
+      </div>
+    </section>
+    <aside class="side">
+      <div class="card" id="card">
+        <div class="card-h"><span>ÁRBOL DE DIAGNÓSTICO · <b>MOTOS</b></span><span id="cardDate">ELECTRÓNICA Y SERVICIO</span></div>
+        <div class="card-b">
+          <span class="example" id="cardEx">Ejemplo de resultado</span>
+          <div class="semrow"><div class="semaf" aria-hidden="true"><i class="r" id="cR"></i><i class="y on" id="cY"></i><i class="g" id="cG"></i></div><h3 id="cDiag">Tierra o cable de salida del regulador con resistencia</h3></div>
+          <p class="mono" style="font-size:13px;color:var(--muted)" id="cSint">Síntoma: La batería no carga o se descarga rodando</p>
+          <ol id="cRecs"><li>Limpia y aprieta la tierra; agrega tierra dedicada a la batería si hace falta.</li><li>Revisa el fusible principal y el cable de salida.</li><li>Repite las pruebas de carga antes de cambiar piezas.</li></ol>
+          <p class="clase" id="cClase">Lo resuelves en la Clase 4: Sistema de carga: estator, volante y regulador</p>
+        </div>
+      </div>
+      <div class="panel"><strong>Tu ruta de pruebas</strong><ol class="ruta" id="ruta"><li>Aquí verás cada prueba y tu respuesta.</li></ol></div>
+    </aside>
+  </div>
+
+  <div class="next" id="siguiente">
+    <section class="panel">
+      <p class="eyebrow">Siguiente paso</p>
+      <h2 style="margin-top:6px">Domina el método completo</h2>
+      <p style="margin-top:10px">Diagnóstico Electrónico y Electricidad de Motocicletas para Mecánicos: 12 clases en vivo (18 h) para diagnosticar carga, encendido, arranque e inyección con multímetro, escáner y osciloscopio, y cobrar el diagnóstico como especialista. Imparte Prof. José Luis Orozco Cuautle.</p>
+      <p class="mono" style="margin-top:12px;font-size:24px">$1,799 MXN</p>
+      <p style="margin-top:6px;font-weight:600">Inscripciones: Escribe MOTO por WhatsApp</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px"><a class="btn btn-primary" id="goCurso" href="https://electronicayservicio.com/curso-diagnostico-motos">Ver el curso completo</a><button class="btn btn-ghost" type="button" id="bReto">Reta a un colega</button></div>
+    </section>
+    <section class="panel">
+      <h3 style="font-size:24px">Recibir mis resultados por WhatsApp</h3>
+      <form class="cap" id="cap" novalidate>
+        <label for="fNombre">Nombre</label><input type="text" id="fNombre" autocomplete="given-name" required>
+        <label for="fWa">WhatsApp (10 dígitos)</label><input type="tel" id="fWa" inputmode="numeric" autocomplete="tel-national" placeholder="55 1234 5678" required>
+        <label class="consent" for="fOk"><input type="checkbox" id="fOk" required><span>Acepto recibir mis resultados y avisos del curso por WhatsApp. Puedo darme de baja escribiendo BAJA. Aviso de privacidad abajo.</span></label>
+        <button class="btn btn-primary" type="submit" id="fSend">Recibir mis resultados por WhatsApp</button>
+        <p class="msg" id="fMsg" role="status"></p>
+      </form>
+    </section>
+  </div>
+
+  <section style="margin-top:32px;max-width:860px">
+    <h2 style="font-size:30px;text-transform:uppercase">Preguntas frecuentes</h2>
+    <div class="faq"><details><summary>¿Es gratis de verdad?</summary><p>Sí. No pide registro. Solo si quieres recibir tus resultados por WhatsApp te pedimos nombre y número, con tu consentimiento.</p></details><details><summary>¿Qué herramienta necesito?</summary><p>Un multímetro digital. En algunos pasos ayuda una pinza amperimétrica, un adaptador de voltaje pico o un escáner; si no los tienes, el árbol te dice qué medir.</p></details><details><summary>¿Los valores sirven para cualquier moto?</summary><p>Son valores típicos de referencia tomados de manuales de servicio. Verifica siempre con el manual del modelo exacto.</p></details><details><summary>¿Qué hago con el resultado?</summary><p>Aplica las 3 recomendaciones, documenta con foto y, si quieres dominar el método completo, revisa la clase del curso que lo resuelve.</p></details></div>
+  </section>
+</div></main>
+<footer><div class="wrap">
+  <p><strong>Árbol de Diagnóstico Eléctrico para Mecánicos de Motos</strong> · Prof. José Luis Orozco Cuautle · Electrónica y Servicio · electronicayservicio.com</p>
+  <p>Valores típicos de referencia; verifica siempre con el manual de servicio del fabricante del modelo exacto. Trabaja con seguridad: extintor cerca, nunca hagas chispa junto a la gasolina y usa puentes con fusible.</p>
+  <p>Curso independiente. No está afiliado, patrocinado ni avalado por ninguna de las marcas mencionadas; los nombres se usan solo como referencia técnica.</p>
+  <p id="aviso-privacidad"><strong>Aviso de privacidad breve:</strong> si nos das tu nombre y WhatsApp, los usamos para enviarte tus resultados y, con tu consentimiento, avisos del curso. Puedes ejercer tus derechos o darte de baja escribiendo BAJA. Aviso integral: solicítalo por WhatsApp (por confirmar). Tu progreso se guarda solo en tu navegador.</p>
+</div></footer>
+<div class="toast" id="toast" hidden></div>
+<script>
+(function(){
+  var CF = window.CONFIG || {};
+  var T = [{"id":"no-carga","titulo":"La batería no carga o se descarga rodando","icono":"FaCarBattery","inicio":"n1","nodos":{"n1":{"prueba":"¿La batería marca 12.4 V o más en reposo?","como":"Multímetro en VDC en los bornes, moto apagada 1–2 h.","esperado":"Convencional ≈12.6 V llena · AGM 12.8–13.0 V","si":"n2","no":"F:cargar"},"n2":{"prueba":"Al dar marcha 5 s, ¿el voltaje se mantiene arriba de ≈9.5–10 V?","como":"Multímetro en bornes durante la marcha (modo MIN si lo tiene).","esperado":"No caer de ≈9.5–10 V (criterio práctico)","si":"n3","no":"F:bateria"},"n3":{"prueba":"A 5,000 rpm, ¿el voltaje sube a 13.5–14.8 V?","como":"Multímetro en bornes con el motor acelerado y sostenido.","esperado":"≈13.5–14.8 V (ej. Yamaha XG250: 14 V a 5,000 rpm)","si":"n3b","no":"n4"},"n3b":{"prueba":"Con faro y accesorios encendidos, ¿se sostiene arriba de 13 V?","como":"Repite a 5,000 rpm con todo encendido.","esperado":"Arriba de 13 V","si":"F:carga-ok","no":"F:exceso-consumo"},"n4":{"prueba":"¿El voltaje pasa de 15 V de forma sostenida?","como":"Misma medición a 5,000 rpm.","esperado":"No debe pasar de ≈15 V","si":"F:sobrecarga","no":"n5"},"n5":{"prueba":"¿El conector estator-regulador está sano (sin café ni derretido)?","como":"Desconecta y revisa plástico y terminales.","esperado":"Terminales limpias y firmes","si":"n6","no":"F:conector"},"n6":{"prueba":"Estator desconectado: ¿resistencias bajas y parejas entre fases y abierto a tierra?","como":"Ohms entre fases y de cada fase al chasis.","esperado":"Ej. 0.1–1.0 Ω entre fases; OL a tierra","si":"n7","no":"F:estator"},"n7":{"prueba":"Con motor encendido, ¿el VAC entre fases es parejo y sube con las rpm?","como":"VAC entre cada par de fases en ralentí y a 5,000 rpm.","esperado":"Tres lecturas parecidas que suben con rpm","si":"n8","no":"F:estator-debil"},"n8":{"prueba":"¿La tierra y la salida del regulador tienen caída menor a 0.2 V?","como":"Caída de tensión con el motor en marcha.","esperado":"< 0.2 V","si":"F:regulador","no":"F:tierra-reg"}},"finales":{"cargar":{"semaforo":"amarillo","diagnostico":"Batería descargada: aún no se puede juzgar el sistema","recs":["Carga con cargador inteligente a 1/10 de la capacidad (o modo litio si es LiFePO4).","Repite la medición en reposo tras 1–2 h y luego la prueba de arranque.","Si baja de 11.5 V puede requerir cargador o procedimiento especial."],"clase":3},"bateria":{"semaforo":"rojo","diagnostico":"Batería débil o dañada (o cables con resistencia)","recs":["Antes de cambiarla, mide caída de tensión en cables y tierra al dar marcha.","Si los cables están bien, reemplaza la batería por el tipo que pide el fabricante.","Explica al cliente con las dos lecturas: reposo y arranque."],"clase":3},"carga-ok":{"semaforo":"verde","diagnostico":"El sistema de carga funciona","recs":["Mide el consumo parásito con la moto apagada.","Pregunta por el uso: trayectos cortos y días sin rodar descargan la batería.","Recomienda mantenedor de batería si la moto se usa poco."],"clase":3},"exceso-consumo":{"semaforo":"amarillo","diagnostico":"La moto consume más de lo que el estator genera","recs":["Suma los watts de faros, cargadores y accesorios instalados.","Revisa la prueba dinámica del estator: puede estar débil.","Reinstala accesorios con relevador y considera luces LED de menor consumo."],"clase":10},"sobrecarga":{"semaforo":"rojo","diagnostico":"Sobrecarga: regulador o su tierra","recs":["Mide la caída de tensión en la tierra del regulador antes de cambiarlo.","Cambia el regulador si la tierra está bien; revisa batería y focos dañados.","En motos con batería de litio, confirma que el voltaje no pase de 14.6 V."],"clase":4},"conector":{"semaforo":"rojo","diagnostico":"Conector estator-regulador dañado por calor","recs":["Reemplaza terminales o elimina el conector con uniones soldadas y selladas.","Revisa también estator y regulador: el calor pudo dañarlos.","Documenta con foto el antes y después para el cliente."],"clase":4},"estator":{"semaforo":"rojo","diagnostico":"Estator abierto o en corto a tierra","recs":["Confirma restando la resistencia de tus puntas.","Reemplaza o rebobina el estator y revisa el volante.","Investiga la causa: exceso de accesorios o regulador shunt trabajando a tope."],"clase":4},"estator-debil":{"semaforo":"rojo","diagnostico":"Estator débil o imanes del volante debilitados","recs":["Compara la fase baja contra las otras dos.","Revisa el volante (imanes flojos o golpeados).","Ofrece la mejora con regulador tipo serie en motos con historial de falla."],"clase":4},"regulador":{"semaforo":"rojo","diagnostico":"Regulador-rectificador dañado","recs":["Confirma con prueba de diodos o rizo en osciloscopio.","Instala un regulador de calidad con buena tierra y ventilación.","Repite la prueba de carga con todo encendido al entregar."],"clase":4},"tierra-reg":{"semaforo":"amarillo","diagnostico":"Tierra o cable de salida del regulador con resistencia","recs":["Limpia y aprieta la tierra; agrega tierra dedicada a la batería si hace falta.","Revisa el fusible principal y el cable de salida.","Repite las pruebas de carga antes de cambiar piezas."],"clase":4}},"max":8},{"id":"no-marcha","titulo":"No da marcha al presionar el botón","icono":"FaPowerOff","inicio":"n1","nodos":{"n1":{"prueba":"¿La batería marca 12.4 V o más en reposo?","como":"Multímetro en bornes.","esperado":"≥12.4 V","si":"n2","no":"F:cargar"},"n2":{"prueba":"Al presionar el botón, ¿se escucha el clic del relevador de arranque?","como":"Llave ON, neutral o clutch apretado.","esperado":"Clic claro","si":"n5","no":"n3"},"n3":{"prueba":"¿Llegan 12 V a la bobina del relevador con el botón presionado?","como":"Multímetro en el conector chico del relevador.","esperado":"≈ voltaje de batería","si":"n4","no":"F:control"},"n4":{"prueba":"¿La bobina del relevador tiene tierra (neutral o clutch accionado)?","como":"Caída de tensión del pin de tierra de la bobina al chasis.","esperado":"< 0.2 V","si":"F:rele-bobina","no":"F:seguridad"},"n5":{"prueba":"Al dar marcha, ¿la caída entre los postes grandes del relevador es menor a 0.3 V?","como":"Voltímetro entre los dos postes grandes.","esperado":"< 0.2–0.3 V","si":"n6","no":"F:rele-contacto"},"n6":{"prueba":"¿La caída en el positivo y en la tierra del motor de arranque es menor a 0.5 V cada una?","como":"Caída de tensión de batería a motor (+) y de bloque a batería (−).","esperado":"< 0.5 V cada lado","si":"n7","no":"F:cables"},"n7":{"prueba":"Con pinza, ¿la corriente es muy alta y el motor casi no gira?","como":"Pinza DC en el cable del motor de arranque; compara con moto sana.","esperado":"Corriente similar a una moto sana","si":"F:trabado","no":"F:marcha-desgaste"}},"finales":{"cargar":{"semaforo":"amarillo","diagnostico":"Batería baja: cárgala antes de seguir","recs":["Carga con cargador inteligente.","Haz la prueba de arranque.","Si no recupera, sigue el árbol \"no carga\"."],"clase":3},"control":{"semaforo":"rojo","diagnostico":"Falla en el circuito de control","recs":["Sigue con el diagrama: fusible, llave, paro de motor y botón.","Mide 12 V a la salida de cada interruptor con el botón presionado.","Limpia y protege los interruptores de manubrio."],"clase":6},"rele-bobina":{"semaforo":"rojo","diagnostico":"Bobina del relevador abierta","recs":["Mide la resistencia de la bobina (según manual).","Reemplaza el relevador y revisa el fusible principal.","Confirma con caída de tensión entre postes al dar marcha."],"clase":6},"seguridad":{"semaforo":"amarillo","diagnostico":"Interruptor de neutral, clutch o pata lateral (o su diodo)","recs":["Prueba cada interruptor con continuidad o caída de tensión mientras lo accionas.","Limpia lodo y ajusta el interruptor de pata lateral.","Revisa diodos en corto o abiertos según el diagrama."],"clase":6},"rele-contacto":{"semaforo":"rojo","diagnostico":"Contacto del relevador carbonizado","recs":["Reemplaza el relevador de arranque.","Aprieta terminales y revisa el fusible principal.","Mide de nuevo la caída al entregar."],"clase":6},"cables":{"semaforo":"amarillo","diagnostico":"Cable o tierra con resistencia","recs":["Limpia y aprieta terminales y tierra al bloque.","Reemplaza el cable si tiene hilos rotos o sulfato interno.","Repite la caída de tensión con la moto dando marcha."],"clase":1},"trabado":{"semaforo":"rojo","diagnostico":"Motor de arranque trabado o problema mecánico","recs":["Revisa bujes y engranes del motor de arranque.","Descarta problema del motor de combustión (gira a mano).","Compara la corriente con una moto sana del mismo modelo."],"clase":6},"marcha-desgaste":{"semaforo":"rojo","diagnostico":"Motor de arranque con carbones o colector gastados","recs":["Desarma y revisa carbones, colector e imanes.","Repara o reemplaza el motor de arranque.","Si gira pero no arrastra, revisa el embrague de arranque."],"clase":6}},"max":5},{"id":"sin-chispa","titulo":"El motor gira pero no hay chispa","icono":"FaFire","inicio":"n1","nodos":{"n1":{"prueba":"Con bujía y capuchón conocidos como buenos, ¿hay chispa en el probador ajustable?","como":"Probador de chispa conectado al capuchón, lejos de gasolina.","esperado":"Chispa azul y constante","si":"F:bujia","no":"n2"},"n2":{"prueba":"¿El paro de motor, la pata lateral y el neutral funcionan bien?","como":"Continuidad o caída de tensión en cada interruptor accionándolo.","esperado":"Cambio claro de abierto a cerrado","si":"n3","no":"F:interruptores"},"n3":{"prueba":"¿El módulo recibe su energía? (CDI DC/ECU: 12 V y tierra · CDI AC: excitación ≥100 V pico)","como":"Llave ON o adaptador de voltaje pico al dar marcha.","esperado":"12 V y tierra < 0.1 V · excitación ≥100 V pico","si":"n4","no":"F:alimentacion"},"n4":{"prueba":"¿El pulsador o CKP da al menos 0.7 V pico al dar marcha?","como":"Adaptador de voltaje pico u osciloscopio.","esperado":"≥ 0.7 V pico","si":"n5","no":"F:pulsador"},"n5":{"prueba":"¿Llega disparo al primario de la bobina (≥100 V pico o pulso en osciloscopio)?","como":"Voltaje pico o osciloscopio con x10.","esperado":"≥ 100 V pico","si":"F:bobina","no":"F:modulo"}},"finales":{"bujia":{"semaforo":"verde","diagnostico":"La falla estaba en la bujía o el capuchón","recs":["Instala la bujía del grado y separación del manual.","Mide el capuchón (≈5 kΩ típico).","Revisa el color de la bujía vieja para detectar mezcla."],"clase":5},"interruptores":{"semaforo":"amarillo","diagnostico":"Interruptor de seguridad cortando el encendido","recs":["Limpia o reemplaza el interruptor dañado.","Revisa el cable hacia el CDI o ECU.","Explica al cliente cómo funciona la seguridad de la pata lateral."],"clase":5},"alimentacion":{"semaforo":"rojo","diagnostico":"El módulo no recibe energía","recs":["Sigue el circuito: fusible, llave, paro de motor o bobina de excitación.","Mide la caída de tensión en la tierra del módulo.","En CDI AC, revisa la bobina de excitación del estator."],"clase":5},"pulsador":{"semaforo":"rojo","diagnostico":"Pulsador/CKP sin señal suficiente","recs":["Revisa limadura y distancia al volante.","Mide resistencia y aislamiento a tierra.","Confirma con osciloscopio antes de reemplazar."],"clase":5},"bobina":{"semaforo":"rojo","diagnostico":"Bobina o cable de alta tensión dañados","recs":["Mide primario, secundario y capuchón.","Busca fugas de alto voltaje con la moto en oscuridad.","Reemplaza la bobina y prueba con probador ajustable."],"clase":5},"modulo":{"semaforo":"rojo","diagnostico":"Módulo CDI/ECU o inmovilizador sospechoso","recs":["Confirma alimentación, tierra y pulsador una vez más.","Simula la señal del pulsador con Sens-22: si no dispara, el módulo falla.","Revisa el testigo del inmovilizador en motos que lo tienen."],"clase":9}},"max":5},{"id":"se-descarga","titulo":"La batería amanece descargada con la moto parada","icono":"FaBatteryQuarter","inicio":"n1","nodos":{"n1":{"prueba":"Después de cargarla, ¿la batería pasa la prueba de arranque?","como":"Carga completa, reposo y medición al dar marcha.","esperado":"No caer de ≈9.5–10 V","si":"n2","no":"F:bateria"},"n2":{"prueba":"¿El voltaje de carga es correcto (13.5–14.8 V a 5,000 rpm)?","como":"Multímetro en bornes con el motor acelerado.","esperado":"13.5–14.8 V típico","si":"n3","no":"F:carga"},"n3":{"prueba":"Con módulos dormidos, ¿el consumo parásito es menor a 20–50 mA (sin alarma)?","como":"Amperímetro en serie en el negativo; espera a que los módulos duerman.","esperado":"< 20–50 mA (criterio práctico)","si":"F:uso","no":"n4"},"n4":{"prueba":"Al medir mV sobre cada fusible, ¿alguno muestra corriente?","como":"Multímetro en mV sobre las dos caras de cada fusible.","esperado":"Unos mV en el circuito con consumo","si":"n5","no":"F:sin-fusible"},"n5":{"prueba":"¿Ese circuito tiene accesorios instalados (alarma, GPS, USB, luces)?","como":"Revisa el arnés de ese fusible.","esperado":"—","si":"F:accesorio","no":"F:fuga"}},"finales":{"bateria":{"semaforo":"rojo","diagnostico":"Batería con daño interno","recs":["Reemplázala por el tipo que pide el fabricante.","Activa correctamente las AGM nuevas.","Después mide consumo parásito para que no se repita."],"clase":3},"carga":{"semaforo":"amarillo","diagnostico":"Primero hay que resolver el sistema de carga","recs":["Sigue el árbol \"no carga\".","Revisa conector estator-regulador.","Repite este árbol al terminar."],"clase":4},"uso":{"semaforo":"verde","diagnostico":"Consumo normal: la descarga viene del uso","recs":["Pregunta cuántos días pasa sin rodar.","Recomienda mantenedor de batería.","Calcula con el cliente los días de autonomía."],"clase":3},"sin-fusible":{"semaforo":"rojo","diagnostico":"Consumo en un circuito sin fusible","recs":["Desconecta uno a uno: regulador, accesorios directos a batería, motor de arranque.","Un regulador con diodo en fuga es causa frecuente.","Mide de nuevo el consumo tras cada desconexión."],"clase":3},"accesorio":{"semaforo":"amarillo","diagnostico":"Accesorio mal conectado o con consumo alto","recs":["Reinstala con relevador activado por positivo de llave.","Mide el consumo en reposo de la alarma o GPS y explica la autonomía.","Elimina empalmes rápidos de presión."],"clase":10},"fuga":{"semaforo":"rojo","diagnostico":"Componente del circuito con fuga (relevador pegado, interruptor)","recs":["Desconecta componentes del circuito uno a uno.","Revisa relevadores pegados y luces que se quedan encendidas.","Confirma con caída en el fusible después de reparar."],"clase":3}},"max":5},{"id":"inyeccion","titulo":"Moto de inyección no arranca, se apaga o tiene testigo","icono":"FaGasPump","inicio":"n1","nodos":{"n1":{"prueba":"Al poner la llave, ¿el testigo enciende y la bomba suena 2–3 segundos?","como":"Escucha junto al tanque y observa el tablero.","esperado":"Testigo y zumbido de bomba","si":"n2","no":"n1b"},"n1b":{"prueba":"¿Hay un fusible fundido o el sensor de inclinación está activado o al revés?","como":"Revisa fusibles y la posición del sensor (flecha UP).","esperado":"Fusibles bien y sensor en posición","si":"F:fusible","no":"F:alim-ecu"},"n2":{"prueba":"¿Hay códigos de falla (escáner o destellos)?","como":"Escáner de motos o conector de servicio.","esperado":"—","si":"F:codigos","no":"n3"},"n3":{"prueba":"Al dar marcha, ¿el escáner muestra rpm?","como":"Datos en vivo durante la marcha.","esperado":"rpm de marcha (no cero)","si":"n4","no":"F:ckp"},"n4":{"prueba":"¿La presión de combustible es correcta?","como":"Manómetro con adaptador adecuado.","esperado":"Ej. 294 kPa (≈43 psi) en Honda chica","si":"n5","no":"F:presion"},"n5":{"prueba":"¿Llega pulso al inyector y hay chispa al dar marcha?","como":"Lámpara noid u osciloscopio y probador de chispa.","esperado":"Pulso y chispa presentes","si":"F:mecanico","no":"F:ecu"}},"finales":{"fusible":{"semaforo":"amarillo","diagnostico":"Fusible o sensor de inclinación cortando el sistema","recs":["Reemplaza el fusible y busca la causa del corto.","Monta el sensor de inclinación en su posición y reinicia la llave.","Confirma bomba y testigo antes de entregar."],"clase":6},"alim-ecu":{"semaforo":"rojo","diagnostico":"La ECU no se energiza","recs":["Revisa relevador principal y sus fusibles.","Mide alimentaciones y tierras en el conector de la ECU.","Revisa batería y caída de tensión en tierras."],"clase":7},"codigos":{"semaforo":"amarillo","diagnostico":"Hay códigos: aplica el método del código a la pieza","recs":["Anota códigos y cuadro congelado antes de borrar.","Ubica el circuito en el diagrama y mide alimentación, tierra y señal.","Repara, borra, prueba y vuelve a leer."],"clase":8},"ckp":{"semaforo":"rojo","diagnostico":"Sin señal del sensor de cigüeñal","recs":["Revisa limadura, distancia y conector del CKP.","Mide resistencia y voltaje pico.","Confirma con osciloscopio el diente faltante."],"clase":7},"presion":{"semaforo":"rojo","diagnostico":"Presión de combustible incorrecta","recs":["Revisa filtro y bomba con pinza amperimétrica.","Mide alimentación y tierra de la bomba.","Revisa mangueras y regulador de presión."],"clase":7},"ecu":{"semaforo":"rojo","diagnostico":"Falta control de la ECU (alimentación, tierra o inmovilizador)","recs":["Verifica alimentaciones y tierras de la ECU.","Revisa testigo del inmovilizador y llave registrada.","Simula señales con Sens-22 para aislar ECU contra sensores."],"clase":9},"mecanico":{"semaforo":"amarillo","diagnostico":"La parte eléctrica responde: revisa lo mecánico","recs":["Mide compresión y revisa admisión y escape.","Revisa bujía y sensor de temperatura (mezcla).","Usa datos en vivo para comparar con una moto sana."],"clase":8}},"max":5},{"id":"focos","titulo":"Focos o LED se funden o las luces parpadean","icono":"FaLightbulb","inicio":"n1","nodos":{"n1":{"prueba":"¿El voltaje de carga pasa de 15 V a 5,000 rpm?","como":"Multímetro en bornes de batería.","esperado":"No pasar de ≈15 V","si":"F:sobrecarga","no":"n2"},"n2":{"prueba":"¿El faro trabaja en alterna (la luz sube con las rpm)?","como":"Revisa el diagrama o mide VAC en el socket.","esperado":"—","si":"n3","no":"n4"},"n3":{"prueba":"¿El VAC en el faro se mantiene regulado al subir rpm?","como":"VAC en el socket en ralentí y a 5,000 rpm.","esperado":"Estable, sin subir sin control","si":"n4","no":"F:luces-reg"},"n4":{"prueba":"¿Sockets, conectores y tierras tienen caída menor a 0.2 V y sin sulfato?","como":"Caída de tensión con la luz encendida.","esperado":"< 0.2 V","si":"n5","no":"F:conectores"},"n5":{"prueba":"¿Se instalaron LED o accesorios recientemente?","como":"Pregunta al cliente y revisa la instalación.","esperado":"—","si":"F:led","no":"F:calidad"}},"finales":{"sobrecarga":{"semaforo":"rojo","diagnostico":"Sobrecarga del regulador","recs":["Revisa tierra del regulador y cámbialo si está bien.","Revisa batería: pudo dañarse.","Mide carga con todo encendido al entregar."],"clase":4},"luces-reg":{"semaforo":"rojo","diagnostico":"Regulación de luces en alterna deficiente","recs":["Revisa la sección de luces del regulador y su tierra.","Confirma bobina de luces del estator.","Usa focos o LED compatibles con alterna."],"clase":6},"conectores":{"semaforo":"amarillo","diagnostico":"Sockets o conectores con resistencia","recs":["Limpia con limpiador de contactos y protege con grasa dieléctrica.","Reemplaza sockets derretidos.","Repara tierras flojas."],"clase":6},"led":{"semaforo":"amarillo","diagnostico":"LED incompatible o mal instalado","recs":["Usa LED compatible con alterna o agrega rectificador.","Verifica disipador y patrón de luz.","En direccionales, instala flasher electrónico para LED."],"clase":10},"calidad":{"semaforo":"verde","diagnostico":"Foco de baja calidad o vibración","recs":["Usa focos de marca reconocida.","Revisa el montaje del faro y su hule antivibración.","Explica al cliente la diferencia de calidad."],"clase":6}},"max":5}];
+  var CL = [{"n":1,"t":"Electricidad aplicada a la moto y multímetro sin miedo"},{"n":2,"t":"Cómo leer diagramas eléctricos de motos"},{"n":3,"t":"Batería, carga correcta y consumo parásito"},{"n":4,"t":"Sistema de carga: estator, volante y regulador"},{"n":5,"t":"Sistema de encendido: CDI, TCI y bobinas"},{"n":6,"t":"Arranque, luces y circuitos de seguridad"},{"n":7,"t":"Inyección electrónica en motos: sensores y actuadores"},{"n":8,"t":"Escáner y autodiagnóstico de motos"},{"n":9,"t":"Osciloscopio, fallas intermitentes y reparación de arneses"},{"n":10,"t":"Servicios eléctricos que más se venden"},{"n":11,"t":"Precios, paquetes y cómo cobrar el diagnóstico"},{"n":12,"t":"Consigue clientes y plan de acción de 30 días"}];
+  var KEY = "es-arbol-motos";
+  var st = { tree: null, path: [] }; // path: [{id, ans}]
+  function $(id){ return document.getElementById(id); }
+  function tree(){ return T.find(function(t){ return t.id === st.tree; }); }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e){} }
+  function load(){ try { var v = JSON.parse(localStorage.getItem(KEY) || "null"); if (v && v.tree) st = v; } catch(e){} }
+  function toast(t){ var el = $("toast"); el.textContent = t; el.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(function(){ el.hidden = true; }, 2800); }
+  function current(){ var t = tree(); if (!t) return null; var id = t.inicio; st.path.forEach(function(p){ var n = t.nodos[p.id]; id = p.ans ? n.si : n.no; }); return id; }
+  function setProg(n, max, txt){ var pct = Math.min(100, Math.round(n / max * 100)); $("barI").style.width = pct + "%"; $("bar").setAttribute("aria-valuenow", pct); $("progT").textContent = txt; }
+  function clase(n){ var c = CL[n - 1]; return "Lo resuelves en la Clase " + n + ": " + c.t; }
+  var LAST = null;
+  function render(){
+    var t = tree();
+    $("vSym").hidden = !!t; $("vStep").hidden = true; $("vRes").hidden = true;
+    var ruta = $("ruta"); ruta.innerHTML = "";
+    if (!t){ setProg(0, 1, "Paso 0 · elige un síntoma"); var li = document.createElement("li"); li.textContent = "Aquí verás cada prueba y tu respuesta."; ruta.appendChild(li); return; }
+    st.path.forEach(function(p, i){ var li = document.createElement("li"); li.innerHTML = "<b>" + (p.ans ? "Sí" : "No") + "</b> · "; li.appendChild(document.createTextNode(t.nodos[p.id].prueba)); ruta.appendChild(li); });
+    var id = current();
+    if (id.indexOf("F:") === 0){
+      var f = t.finales[id.slice(2)]; LAST = { t: t, f: f };
+      $("vRes").hidden = false; $("rTitle").textContent = f.diagnostico;
+      setProg(1, 1, "Resultado listo · " + st.path.length + " pruebas");
+      $("cardEx").textContent = "Tu resultado · " + new Date().toLocaleDateString("es-MX");
+      var SK = { rojo: "r", amarillo: "y", verde: "g" }[f.semaforo];
+      ["r","y","g"].forEach(function(k){ $("c" + k.toUpperCase()).className = k + (k === SK ? " on" : ""); });
+      $("cDiag").textContent = f.diagnostico; $("cSint").textContent = "Síntoma: " + t.titulo;
+      var ol = $("cRecs"); ol.innerHTML = ""; f.recs.forEach(function(r){ var li = document.createElement("li"); li.textContent = r; ol.appendChild(li); });
+      $("cClase").textContent = clase(f.clase);
+    } else {
+      var n = t.nodos[id];
+      $("vStep").hidden = false; $("stTree").textContent = t.titulo + " · prueba " + (st.path.length + 1);
+      $("stQ").textContent = n.prueba; $("stComo").textContent = n.como; $("stEsp").textContent = n.esperado;
+      setProg(st.path.length, t.max, "Prueba " + (st.path.length + 1) + " de hasta " + t.max);
+    }
+    save();
+  }
+  T.forEach(function(t){ $("sym_" + t.id).addEventListener("click", function(){ st = { tree: t.id, path: [] }; render(); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); }); });
+  function answer(v){ var id = current(); if (!id || id.indexOf("F:") === 0) return; st.path.push({ id: id, ans: v }); render(); }
+  $("bSi").addEventListener("click", function(){ answer(true); }); $("bNo").addEventListener("click", function(){ answer(false); });
+  function back(){ if (st.path.length) st.path.pop(); else st.tree = null; render(); }
+  function reset(){ st = { tree: null, path: [] }; LAST = null; render(); }
+  $("bBack").addEventListener("click", back); $("bBack2").addEventListener("click", back); $("bReset").addEventListener("click", reset); $("bReset2").addEventListener("click", reset);
+  function resumen(){
+    if (!LAST) return "Aún no termino el árbol de diagnóstico.";
+    var sem = LAST.f.semaforo.toUpperCase();
+    return "Síntoma: " + LAST.t.titulo + ". Resultado (" + sem + "): " + LAST.f.diagnostico + ". Recomendaciones: " + LAST.f.recs.join(" ") + " " + clase(LAST.f.clase) + ".";
+  }
+  if (CF.enlaceCurso) $("goCurso").href = CF.enlaceCurso;
+  $("bReto").addEventListener("click", function(){
+    var txt = "Te reto: encuentra por qué una moto no carga, no arranca o se descarga en 10 minutos con este árbol de diagnóstico gratis: " + location.href.split("#")[0];
+    if (navigator.clipboard){ navigator.clipboard.writeText(txt).then(function(){ toast("Texto del reto copiado: pégalo en WhatsApp"); }, function(){ toast(txt); }); } else toast(txt);
+  });
+  function waUrl(nombre){
+    var m = "Hola, soy " + nombre + ". Usé el Árbol de Diagnóstico Eléctrico para motos. " + resumen() + " Quiero información del curso. MOTO";
+    return CF.whatsapp ? "https://wa.me/" + CF.whatsapp.replace(/\D/g, "") + "?text=" + encodeURIComponent(m) : null;
+  }
+  $("cap").addEventListener("submit", function(e){
+    e.preventDefault();
+    var msg = $("fMsg"), nombre = $("fNombre").value.trim(), wa = $("fWa").value.replace(/\D/g, "");
+    msg.className = "msg";
+    if (!nombre){ msg.className = "msg err"; msg.textContent = "Escribe tu nombre."; $("fNombre").focus(); return; }
+    if (wa.length !== 10){ msg.className = "msg err"; msg.textContent = "Escribe tu WhatsApp a 10 dígitos, sin lada internacional."; $("fWa").focus(); return; }
+    if (!$("fOk").checked){ msg.className = "msg err"; msg.textContent = "Para enviarte el resultado necesitamos tu consentimiento."; return; }
+    var payload = { nombre: nombre, whatsapp: "52" + wa, resultado: resumen(), sintoma: LAST ? LAST.t.titulo : "", semaforo: LAST ? LAST.f.semaforo : "", clase: LAST ? LAST.f.clase : null, fuente: "lead-magnet-arbol", fecha: new Date().toISOString(), consentimiento: true };
+    function fallback(){
+      var u = waUrl(nombre);
+      if (u){ msg.className = "msg ok"; msg.innerHTML = ""; var a = document.createElement("a"); a.href = u; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Abrir WhatsApp con tu resultado"; msg.appendChild(document.createTextNode("Listo. ")); msg.appendChild(a); }
+      else { msg.className = "msg ok"; msg.textContent = "Copia este texto y envíalo por WhatsApp a Electrónica y Servicio: " + resumen(); }
+    }
+    if (CF.webhookUrl){
+      fetch(CF.webhookUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+        .then(function(r){ if (!r.ok) throw new Error(); msg.className = "msg ok"; msg.textContent = "Listo, " + nombre + ". Te enviaremos tus resultados por WhatsApp."; })
+        .catch(fallback);
+    } else fallback();
+  });
+  load(); render();
+})();
+</script>
+</body>
+</html>

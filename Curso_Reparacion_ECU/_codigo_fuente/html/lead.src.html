@@ -1,0 +1,282 @@
+<style>
+/* Concepto: hoja de diagnóstico de banco. Cada paso es una medición con su valor esperado; el resultado es un semáforo de inspección. */
+:root{
+  --bg:#EEF0F2; --paper:#FFFFFF; --card:#F6F7F8; --ink:#1E2227; --muted:#59616B; --line:#CDD2D8;
+  --band:#1E2227; --band2:#2B3036; --band-ink:#EEF0F2; --band-muted:#AEB5BD;
+  --accent:#FFC20E; --accent-ink:#1E2227; --accent-soft:#FFF4CC; --red:#D93C41; --green:#23964A; --blue:#2D6FE0; --amber:#B88A00;
+  --f-display:'Barlow Condensed','Arial Narrow',Arial,sans-serif; --f-body:'Barlow',Arial,Helvetica,sans-serif; --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  --r:10px; --maxw:980px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15181B;--paper:#1E2227;--card:#252A30;--ink:#EEF0F2;--muted:#A6ADB5;--line:#3A4149;--band:#0F1113;--band2:#1B1F23;--accent-soft:#3A3214;--red:#EF6266;--green:#3BC455;--blue:#6EA2FF;--amber:#FFC20E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15181B;--paper:#1E2227;--card:#252A30;--ink:#EEF0F2;--muted:#A6ADB5;--line:#3A4149;--band:#0F1113;--band2:#1B1F23;--accent-soft:#3A3214;--red:#EF6266;--green:#3BC455;--blue:#6EA2FF;--amber:#FFC20E;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--band)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,4.6vw,40px);font-weight:800}
+h3{font-size:23px;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:13px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 20px;border-radius:8px;font-family:var(--f-display);font-weight:800;font-size:20px;text-decoration:none;border:2px solid transparent;cursor:pointer;background:none;color:inherit}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-line{border-color:var(--line);color:var(--ink)}
+.btn-ghost{border-color:var(--band-muted);color:var(--band-ink)}
+section{padding-block:48px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--band);color:var(--band-ink)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding-block:8px}
+.top img{height:32px;width:auto}
+.top .free{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+.hero{background:var(--band);color:var(--band-ink);padding-block:40px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;gap:16px}
+.hero .eyebrow{color:var(--accent)}
+.hero h1{font-size:clamp(46px,8vw,80px);font-weight:800}
+.hero .sub{font-family:var(--f-display);font-weight:700;font-size:clamp(20px,3vw,26px);color:var(--accent);max-width:30em}
+.hero .lead{max-width:38em;color:var(--band-ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.chips li{font-family:var(--f-mono);font-size:14px;padding:7px 11px;border:1px solid #474F58;border-radius:6px;background:#ffffff0a}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.credit{display:flex;gap:10px;align-items:center;color:var(--band-muted);font-size:14.5px}
+.credit img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--accent);background:var(--band2)}
+/* Herramienta */
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tool-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--card);flex-wrap:wrap}
+.prog{flex:1 1 220px;display:grid;gap:6px;min-width:0}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.step{padding:22px 18px;display:grid;gap:16px}
+.sym{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sym button{text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:16px;cursor:pointer;display:grid;gap:4px;color:var(--ink);font:inherit}
+.sym button:hover{border-color:var(--accent)}
+.sym b{font-family:var(--f-display);font-size:22px;line-height:1.1}
+.sym span{font-size:14.5px;color:var(--muted)}
+.qtext{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3.4vw,30px);line-height:1.12}
+.how{background:var(--accent-soft);border-radius:8px;padding:12px 14px;font-size:15.5px;display:grid;gap:2px}
+.how b{font-family:var(--f-mono);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.opts{display:grid;gap:10px}
+.opts button{text-align:left;background:var(--paper);border:1.5px solid var(--ink);border-radius:8px;padding:14px 16px;font:inherit;font-weight:600;color:var(--ink);cursor:pointer;min-height:52px}
+.opts button:hover{background:var(--card)}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.nav button{font-family:var(--f-mono);font-size:14px;background:none;border:1px solid var(--line);border-radius:6px;padding:8px 12px;color:var(--ink);cursor:pointer}
+.ruta{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14.5px;color:var(--muted)}
+/* Resultado */
+.res{display:grid;gap:18px}
+.res-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center}
+.semaforo{display:flex;flex-direction:column;gap:8px;background:#1E2227;border-radius:30px;padding:12px 10px}
+.semaforo i{width:30px;height:30px;border-radius:50%;background:#3A4149;display:block}
+.semaforo i.on.r{background:#E5484D;box-shadow:0 0 16px #E5484D}
+.semaforo i.on.a{background:#FFC20E;box-shadow:0 0 16px #FFC20E}
+.semaforo i.on.v{background:#2FB344;box-shadow:0 0 16px #2FB344}
+.lvl{font-family:var(--f-mono);font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.recs{margin:0;padding-left:22px;display:grid;gap:8px}
+.clase{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.card{background:#1E2227;color:#EEF0F2;border-radius:14px;padding:20px;display:grid;gap:10px;position:relative;overflow:hidden;max-width:560px}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:#FFC20E}
+.card .ch{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-left:8px}
+.card .ch img{height:26px}
+.card .ch span{font-family:var(--f-mono);font-size:12px;color:#AEB5BD}
+.card .cb{padding-left:8px;display:grid;gap:6px}
+.card .k{font-family:var(--f-mono);font-size:11.5px;color:#AEB5BD;text-transform:uppercase;letter-spacing:1px}
+.card .v{font-family:var(--f-display);font-size:24px;font-weight:700;line-height:1.1}
+.card .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.card .cf{padding-left:8px;font-family:var(--f-mono);font-size:12px;color:#FFC20E}
+.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:12px}
+.form .f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form label{display:grid;gap:4px;font-size:15px;font-weight:600}
+.form input[type=text],.form input[type=tel]{font:inherit;padding:12px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.form .chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--muted)}
+.note{font-size:13.5px;color:var(--muted)}
+.next{background:var(--band);color:var(--band-ink)}
+.next .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:24px;align-items:center}
+.next ul{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--band-ink)}
+.next .pbox .price{font-family:var(--f-display);font-weight:800;font-size:46px;color:var(--accent);line-height:1}
+.next .pbox{background:var(--band2);border:1px solid #3A4149;border-radius:14px;padding:18px;display:grid;gap:10px}
+.next .pbox p{color:var(--band-muted);font-size:14.5px}
+.faq{display:grid;gap:10px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:var(--r)}
+.faq summary{cursor:pointer;padding:14px 16px;font-weight:600}
+.faq details p{padding:0 16px 16px;color:var(--muted)}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--band);color:var(--band-ink);border-top:3px solid var(--accent);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sticky .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px;padding-block:8px}
+.sticky .t{min-width:0;display:grid}
+.sticky .t b{font-family:var(--f-display);font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .t span{font-family:var(--f-mono);font-size:12.5px;color:var(--accent)}
+.sticky .btn{min-height:44px;font-size:17px;padding:8px 14px;white-space:nowrap}
+footer{padding-block:24px 110px;color:var(--muted);font-size:13.5px}
+footer .wrap{display:grid;gap:8px}
+.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:8px;font-size:15px;z-index:70;max-width:90vw}
+@media (max-width:760px){
+  .sym,.actions,.form .f2{grid-template-columns:minmax(0,1fr)}
+  .next .wrap{grid-template-columns:minmax(0,1fr)}
+  .res-top{grid-template-columns:minmax(0,1fr)}
+  .semaforo{flex-direction:row;justify-self:start}
+  .hero .row .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div lang="es-MX">
+<header class="top"><div class="wrap"><img src="{{LOGO}}" alt="Electrónica y Servicio" width="85" height="32"><span class="free">100 % gratis · sin registro</span></div></header>
+<main>
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <p class="eyebrow">Herramienta gratuita para técnicos · 10 minutos o menos</p>
+    <h1 id="h1">Árbol de diagnóstico ECU</h1>
+    <p class="sub">Descubre si la falla es la computadora o el vehículo en 10 minutos</p>
+    <p class="lead">{{PROMESA}}</p>
+    <ul class="chips" aria-label="Lo que necesitas"><li>Multímetro</li><li>Escáner</li><li>Osciloscopio (recomendado)</li><li>4 síntomas · 25 resultados</li></ul>
+    <div class="row"><a class="btn btn-primary" href="#herramienta">Empezar diagnóstico</a><span class="credit"><img src="{{PROF}}" alt="Prof. José Luis Orozco Cuautle" width="46" height="46">Método del Prof. José Luis Orozco Cuautle</span></div>
+  </div>
+</section>
+
+<section id="herramienta" aria-labelledby="h-tool">
+  <div class="wrap" style="display:grid;gap:18px">
+    <h2 id="h-tool">Hoja de diagnóstico</h2>
+    <div class="tool">
+      <div class="tool-head">
+        <div class="prog"><span class="eyebrow" id="p-label">Paso 1 · elige el síntoma</span><div class="bar" role="progressbar" aria-labelledby="p-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="p-bar"><i id="p-fill"></i></div></div>
+        <div class="nav"><button type="button" id="b-back" disabled>← Atrás</button><button type="button" id="b-reset">Reiniciar</button></div>
+      </div>
+      <div class="step" id="step" aria-live="polite"></div>
+    </div>
+    <div id="ruta-wrap" hidden><p class="eyebrow">Tu ruta de mediciones</p><ol class="ruta" id="ruta"></ol></div>
+  </div>
+</section>
+
+<section id="resultado" aria-labelledby="h-res" hidden style="background:var(--paper)">
+  <div class="wrap res">
+    <div class="res-top">
+      <div class="semaforo" aria-hidden="true"><i class="r"></i><i class="a"></i><i class="v"></i></div>
+      <div style="display:grid;gap:6px;min-width:0"><p class="lvl" id="r-lvl"></p><h2 id="h-res"></h2><p id="r-res" style="color:var(--muted)"></p></div>
+    </div>
+    <div><p class="eyebrow">3 pasos concretos</p><ol class="recs" id="r-recs"></ol></div>
+    <div class="clase" id="r-clase"></div>
+    <div><p class="eyebrow" style="margin-bottom:8px">Tarjeta de resultado · tómale captura</p>
+      <div class="card" id="r-card">
+        <div class="ch"><img src="{{LOGO}}" alt="Electrónica y Servicio" width="69" height="26"><span id="c-date"></span></div>
+        <div class="cb"><p class="k">Síntoma</p><p class="v" id="c-sym" style="font-size:19px"></p><p class="k">Resultado</p><p class="v" id="c-res"></p><p class="k">Mediciones</p><p id="c-path" style="font-size:13.5px;color:#C9CED4"></p></div>
+        <p class="cf">Árbol de diagnóstico ECU · Electrónica y Servicio</p>
+      </div>
+    </div>
+    <form class="form" id="f-send" novalidate>
+      <h3>Recibir mis resultados por WhatsApp</h3>
+      <div class="f2"><label for="f-nombre">Tu nombre<input type="text" id="f-nombre" autocomplete="name" placeholder="Ej. Juan Pérez"></label><label for="f-wa">Tu WhatsApp (opcional)<input type="tel" id="f-wa" autocomplete="tel" inputmode="tel" placeholder="10 dígitos"></label></div>
+      <label class="chk" for="f-ok"><input type="checkbox" id="f-ok" checked> Acepto recibir mi resultado y contenido técnico por WhatsApp. Puedo darme de baja cuando quiera. Aviso de privacidad: por confirmar.</label>
+      <div class="actions"><button class="btn btn-primary" type="submit">Recibir mis resultados por WhatsApp</button><button class="btn btn-line" type="button" id="b-reta">Reta a un colega</button></div>
+      <p class="note" id="f-msg">Se abre WhatsApp con tu resultado listo para enviar. Si no se abre, usa este enlace: <a id="f-link" href="#" target="_blank" rel="noopener">enviar por WhatsApp</a>.</p>
+    </form>
+  </div>
+</section>
+
+<section class="next" aria-labelledby="h-next">
+  <div class="wrap">
+    <div style="display:grid;gap:14px;min-width:0">
+      <p class="eyebrow" style="color:var(--accent)">Siguiente paso</p>
+      <h2 id="h-next">Del diagnóstico a la reparación: curso presencial de 18 h</h2>
+      <ul><li>Enciende la computadora en banco y simula CKP, CMP, MAP y TPS.</li><li>Repara alimentación, referencia de 5 V, drivers y comunicación CAN/LIN.</li><li>Suelda SMD, respalda memorias con ética y valida con escáner.</li><li>Sal con precios, garantía por escrito y plan de 30 días.</li></ul>
+    </div>
+    <div class="pbox">
+      <p>Reparación de computadoras automotrices · Chrysler / Dodge / Jeep / Nissan</p>
+      <p class="price js-precio">{{PRECIO}}</p>
+      <p>León 27–28 nov · CDMX 16–17 dic 2026 · 12 clases · 10 bonos</p>
+      <a class="btn btn-primary js-curso" href="#">Ver el curso completo</a>
+      <a class="btn btn-ghost js-wa" href="#" target="_blank" rel="noopener">Escribe ECU por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-faq"><div class="wrap" style="display:grid;gap:16px"><h2 id="h-faq">Preguntas frecuentes</h2><div class="faq">{{FAQ}}</div></div></section>
+</main>
+<footer><div class="wrap">
+  <p><b>Electrónica y Servicio</b> · electronicayservicio.com · WhatsApp <span style="font-family:var(--f-mono)">55 5217 3484</span></p>
+  <p>Herramienta orientativa: los valores son típicos y deben confirmarse con el manual del fabricante. No sustituye el diagnóstico completo del vehículo.</p>
+  <p>Independiente de Chrysler, Dodge, Jeep, Stellantis, Nissan y de los fabricantes de herramientas mencionados. Tus respuestas se guardan sólo en tu navegador.</p>
+</div></footer>
+<div class="sticky" role="region" aria-label="Publicidad del curso"><div class="wrap"><div class="t"><b>Curso Reparación de computadoras automotrices</b><span><span class="js-precio">{{PRECIO}}</span> · León y CDMX</span></div><a class="btn btn-primary js-curso" href="#">Ver curso</a></div></div>
+<div class="toast" id="toast" role="status" hidden></div>
+</div>
+
+<script>
+/* ===== CONFIG · edita aquí ===== */
+const CONFIG = {
+  whatsapp: "525552173484",      // 52 + 10 dígitos
+  enlaceCurso: "{{CURSOURL}}",   // Landing del curso
+  precio: 1799,                  // MXN
+  webhookUrl: ""                 // Opcional: webhook entrante (por ejemplo GoHighLevel). Vacío = se usa WhatsApp
+};
+/* ================================ */
+const DATA = {{DATA}};
+(function(){
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const fmt = n => '$' + Math.round(n).toLocaleString('es-MX') + ' MXN';
+  const NIV = { verde: ['v', 'Verde · No es la computadora'], amarillo: ['a', 'Amarillo · Confirma en banco'], rojo: ['r', 'Rojo · Computadora dañada: reparar'] };
+  let st = { sym: null, hist: [] };
+  $$('.js-precio').forEach(e => e.textContent = fmt(CONFIG.precio));
+  $$('.js-curso').forEach(a => { if (CONFIG.enlaceCurso) { a.href = CONFIG.enlaceCurso; a.target = '_blank'; a.rel = 'noopener'; } else a.href = '#h-next'; });
+  const waUrl = m => 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(m);
+  $$('.js-wa').forEach(a => a.href = waUrl('Hola, quiero informes del curso Reparación de computadoras automotrices. ECU'));
+  function save() { try { localStorage.setItem('ecu_arbol', JSON.stringify(st)); } catch (e) {} }
+  function current() { return st.hist.length ? st.hist[st.hist.length - 1].to : st.sym; }
+  function setProg(p, label) { $('#p-fill').style.width = p + '%'; $('#p-bar').setAttribute('aria-valuenow', p); $('#p-label').textContent = label; }
+  function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  function render() {
+    const step = $('#step'), id = current();
+    $('#b-back').disabled = !st.sym;
+    const ruta = $('#ruta'); ruta.innerHTML = st.hist.map(h => `<li>${esc(DATA.nodos[h.from].q)} → <b>${esc(h.label)}</b></li>`).join(''); $('#ruta-wrap').hidden = !st.hist.length;
+    if (!id) {
+      setProg(4, 'Paso 1 · elige el síntoma');
+      step.innerHTML = '<p class="qtext">¿Qué síntoma tiene el vehículo?</p><div class="sym">' + DATA.sintomas.map(s => `<button type="button" data-sym="${s.id}"><b>${esc(s.t)}</b><span>${esc(s.d)}</span></button>`).join('') + '</div>';
+      step.querySelectorAll('[data-sym]').forEach(b => b.addEventListener('click', () => { st = { sym: b.dataset.sym, hist: [] }; save(); render(); }));
+      $('#resultado').hidden = true; return;
+    }
+    if (DATA.resultados[id]) { showResult(id); return; }
+    const n = DATA.nodos[id], k = st.hist.length + 2;
+    setProg(Math.min(90, 12 + st.hist.length * 17), `Paso ${k} · medición`);
+    step.innerHTML = `<p class="qtext">${esc(n.q)}</p><div class="how"><b>Cómo medirlo</b><span>${esc(n.how)}</span></div><div class="opts">` + n.opts.map((o, i) => `<button type="button" data-i="${i}">${esc(o.label)}</button>`).join('') + '</div>';
+    step.querySelectorAll('[data-i]').forEach(b => b.addEventListener('click', () => { const o = n.opts[+b.dataset.i]; st.hist.push({ from: id, label: o.label, to: o.to }); save(); render(); }));
+    $('#resultado').hidden = true;
+  }
+  function summary() { const r = DATA.resultados[current()], s = DATA.sintomas.find(x => x.id === st.sym); return { r, s, path: st.hist.map(h => h.label).join(' → ') }; }
+  function showResult(id) {
+    const r = DATA.resultados[id], s = DATA.sintomas.find(x => x.id === st.sym), c = DATA.clases.find(x => x.n === r.clase);
+    setProg(100, 'Resultado listo');
+    $('#step').innerHTML = `<p class="qtext">Resultado: ${esc(r.t)}</p><a class="btn btn-primary" href="#resultado">Ver mi resultado</a>`;
+    $$('.semaforo i').forEach(i => i.classList.remove('on')); document.querySelector('.semaforo i.' + NIV[r.s][0]).classList.add('on');
+    $('#r-lvl').textContent = NIV[r.s][1]; $('#r-lvl').style.color = r.s === 'verde' ? 'var(--green)' : r.s === 'rojo' ? 'var(--red)' : 'var(--amber)';
+    $('#h-res').textContent = r.t; $('#r-res').textContent = r.r;
+    $('#r-recs').innerHTML = r.recs.map(x => `<li>${esc(x)}</li>`).join('');
+    $('#r-clase').innerHTML = `<p class="eyebrow">Lo resuelves paso a paso en</p><p style="font-family:var(--f-display);font-size:24px;font-weight:700">Clase ${r.clase}: ${esc(c ? c.titulo : '')}</p><p class="note">Curso presencial Reparación de computadoras automotrices · <a class="js-curso2" href="#h-next">ver curso</a></p>`;
+    const cl = $('.js-curso2'); if (CONFIG.enlaceCurso) { cl.href = CONFIG.enlaceCurso; cl.target = '_blank'; cl.rel = 'noopener'; }
+    const col = r.s === 'verde' ? '#2FB344' : r.s === 'rojo' ? '#E5484D' : '#FFC20E';
+    $('#c-sym').textContent = s.t; $('#c-res').innerHTML = `<span class="dot" style="background:${col}"></span>${esc(r.t)}`; $('#c-path').textContent = st.hist.map(h => h.label).join(' → '); $('#c-date').textContent = new Date().toLocaleDateString('es-MX');
+    $('#resultado').hidden = false; updateLink();
+  }
+  function msg() { const { r, s, path } = summary(); const nom = $('#f-nombre').value.trim(); return `Hola, soy ${nom || 'técnico'}. Usé el Árbol de diagnóstico ECU.\nSíntoma: ${s.t}\nResultado: ${NIV[r.s][1]} – ${r.t}\nRuta: ${path}\nQuiero informes del curso (Clase ${r.clase}). ECU`; }
+  function updateLink() { if (current() && DATA.resultados[current()]) $('#f-link').href = waUrl(msg()); }
+  $('#f-nombre').addEventListener('input', updateLink);
+  function toast(t) { const el = $('#toast'); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2800); }
+  $('#f-send').addEventListener('submit', async e => {
+    e.preventDefault(); updateLink();
+    const { r, s, path } = summary();
+    const payload = { nombre: $('#f-nombre').value.trim(), whatsapp: $('#f-wa').value.replace(/\D/g, ''), consentimiento: $('#f-ok').checked, sintoma: s.t, resultado: r.t, nivel: r.s, clase: r.clase, ruta: path, fuente: 'arbol-diagnostico-ecu', fecha: new Date().toISOString() };
+    if (CONFIG.webhookUrl) { try { const res = await fetch(CONFIG.webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); if (res.ok) { toast('Listo: recibimos tu resultado. Te escribiremos por WhatsApp.'); return; } } catch (err) {} }
+    const a = $('#f-link'); a.href = waUrl(msg()); a.click(); toast('Abriendo WhatsApp con tu resultado…');
+  });
+  $('#b-reta').addEventListener('click', () => {
+    const { r } = summary(); const url = location.href.split('#')[0];
+    const t = `Hice el Árbol de diagnóstico ECU y salió: ${r.t}. ¿Tú sabes separar una falla de computadora de una del vehículo? Pruébalo gratis: ${url}`;
+    const ok = () => toast('Texto copiado: pégalo en WhatsApp para retar a un colega.');
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, () => fb(t, ok)); else fb(t, ok);
+  });
+  function fb(t, ok) { const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); ok(); } catch (e) { toast(t); } ta.remove(); }
+  $('#b-back').addEventListener('click', () => { if (st.hist.length) st.hist.pop(); else st.sym = null; save(); render(); });
+  $('#b-reset').addEventListener('click', () => { st = { sym: null, hist: [] }; save(); render(); });
+  try { const sv = JSON.parse(localStorage.getItem('ecu_arbol') || 'null'); if (sv && sv.sym && Array.isArray(sv.hist)) st = sv; } catch (e) {}
+  if (!st.sym) { st = { sym: 'A1', hist: [{ from: 'A1', label: 'Sí comunica', to: 'A2' }] }; st.demo = true; }
+  render();
+  if (st.demo) { $('#p-label').textContent = 'Ejemplo en curso · paso 3 (puedes reiniciar)'; delete st.demo; }
+})();
+</script>

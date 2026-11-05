@@ -1,0 +1,499 @@
+<style>
+/* Concepto: banco de pruebas de taller → orden de servicio → nota de venta. Banda oscura de taller arriba, papel de orden de servicio abajo. */
+:root{
+  --bg:#EEF0F2; --paper:#FFFFFF; --card:#F6F7F8; --ink:#1E2227; --muted:#59616B; --line:#CDD2D8;
+  --band:#1E2227; --band2:#2B3036; --band-ink:#EEF0F2; --band-muted:#AEB5BD;
+  --accent:#FFC20E; --accent-ink:#1E2227; --accent-soft:#FFF4CC; --red:#D93C41; --green:#23964A; --blue:#2D6FE0;
+  --f-display:'Barlow Condensed','Arial Narrow',Arial,sans-serif; --f-body:'Barlow',Arial,Helvetica,sans-serif; --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  --r:10px; --maxw:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15181B;--paper:#1E2227;--card:#252A30;--ink:#EEF0F2;--muted:#A6ADB5;--line:#3A4149;--band:#0F1113;--band2:#1B1F23;--band-ink:#EEF0F2;--band-muted:#9BA2AA;--accent-soft:#3A3214;--red:#EF6266;--green:#3BC455;--blue:#6EA2FF;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15181B;--paper:#1E2227;--card:#252A30;--ink:#EEF0F2;--muted:#A6ADB5;--line:#3A4149;--band:#0F1113;--band2:#1B1F23;--band-ink:#EEF0F2;--band-muted:#9BA2AA;--accent-soft:#3A3214;--red:#EF6266;--green:#3BC455;--blue:#6EA2FF;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--band)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:.2px}
+h2{font-size:clamp(30px,5vw,46px);font-weight:800}
+h3{font-size:24px;font-weight:700}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:13px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 22px;border-radius:8px;font-family:var(--f-display);font-weight:800;font-size:21px;letter-spacing:.3px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{background:transparent;color:var(--band-ink);border-color:var(--band-muted)}
+.btn-dark{background:var(--ink);color:var(--paper)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--line)}
+.wa{width:20px;height:20px;flex:none}
+section{padding-block:64px}
+.sec-head{display:grid;gap:10px;margin-bottom:28px;max-width:760px}
+.sec-head p{color:var(--muted)}
+/* Barra superior */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--band);color:var(--band-ink);border-bottom:1px solid #2F353C}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding-block:8px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;text-decoration:none}
+.brand img{height:34px;width:auto;border-radius:2px}
+.brand span{font-family:var(--f-display);font-weight:700;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .btn{min-height:42px;padding:8px 14px;font-size:17px}
+/* Portada */
+.hero{background:var(--band);color:var(--band-ink);padding-block:44px 36px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+.hero .eyebrow{color:var(--accent)}
+.hero h1{font-size:clamp(44px,7vw,78px);font-weight:800;margin:10px 0 6px}
+.hero .marcas{font-family:var(--f-display);font-weight:700;font-size:clamp(20px,2.6vw,26px);color:var(--accent);letter-spacing:.5px}
+.hero .tesis{font-size:clamp(18px,2.2vw,21px);color:var(--band-ink);margin:16px 0 20px;max-width:34em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;padding:0;list-style:none}
+.chips li{font-family:var(--f-mono);font-size:14px;padding:7px 11px;border:1px solid #474F58;border-radius:6px;background:#ffffff0a}
+.chips li b{color:var(--accent);font-weight:600}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.imparte{display:flex;align-items:center;gap:12px;margin-top:22px;color:var(--band-muted);font-size:15px}
+.imparte img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:top;background:var(--band2);border:2px solid var(--accent)}
+.imparte b{color:var(--band-ink)}
+.bench{width:100%;height:auto;display:block;border-radius:14px;background:#14171A;border:1px solid #333A42}
+.bench .trace{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s linear infinite}
+.bench .blink{animation:blink 1.1s steps(2,start) infinite}
+.bench .led{animation:led 1.6s ease-in-out infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes blink{to{visibility:hidden}}
+@keyframes led{0%,100%{opacity:.25}50%{opacity:1}}
+.sedes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:30px}
+.sede{background:var(--band2);border:1px solid #3A4149;border-radius:var(--r);padding:14px 16px;min-width:0}
+.sede .d{font-family:var(--f-display);font-weight:800;font-size:28px;color:var(--accent);line-height:1}
+.sede .c{font-family:var(--f-display);font-weight:700;font-size:20px;margin-top:4px}
+.sede .l{color:var(--band-muted);font-size:14px}
+/* Cinta de precaución */
+.tape{height:14px;background:repeating-linear-gradient(-45deg,var(--accent) 0 14px,#1E2227 14px 28px)}
+/* Consejos */
+.tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tip{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
+.tip .n{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.tip h3{font-size:23px}
+.tip .cl{font-family:var(--f-mono);font-size:13px;color:var(--ink);background:var(--accent-soft);padding:6px 9px;border-radius:5px;justify-self:start}
+/* Diagnóstico */
+.diag{display:grid;grid-template-columns:1.4fr .9fr;gap:22px;align-items:start}
+.qlist{display:grid;gap:10px;margin:0;padding:0;border:0}
+.q{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}
+.q legend{display:contents}
+.q .qt{font-size:16px}
+.yn{display:flex;gap:6px}
+.yn input{position:absolute;opacity:0;pointer-events:none}
+.yn label{font-family:var(--f-mono);font-size:14px;padding:8px 12px;border:1.5px solid var(--line);border-radius:6px;cursor:pointer;min-width:52px;text-align:center}
+.yn input:checked+label{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.yn input:focus-visible+label{outline:3px solid var(--blue);outline-offset:2px}
+.result{position:sticky;top:84px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:14px}
+.semaforo{display:flex;gap:10px;align-items:center;background:#1E2227;border-radius:40px;padding:10px 14px;justify-self:start}
+.semaforo i{width:26px;height:26px;border-radius:50%;background:#3A4149;display:block;transition:background .2s}
+.semaforo i.on.r{background:#E5484D;box-shadow:0 0 14px #E5484D}
+.semaforo i.on.a{background:#FFC20E;box-shadow:0 0 14px #FFC20E}
+.semaforo i.on.v{background:#2FB344;box-shadow:0 0 14px #2FB344}
+.score{font-family:var(--f-display);font-weight:800;font-size:44px;line-height:1}
+.score small{font-size:20px;color:var(--muted)}
+.missing{margin:0;padding-left:18px;display:grid;gap:4px;font-size:15px}
+.result .btns{display:grid;gap:8px}
+.note{font-size:13px;color:var(--muted)}
+/* Calculadora */
+.calc{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:start}
+.sl{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:8px}
+.sl .row{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.sl label{font-size:16px}
+.sl output{font-family:var(--f-mono);font-weight:600;white-space:nowrap}
+input[type=range]{width:100%;accent-color:var(--accent);height:28px}
+.sliders{display:grid;gap:10px}
+.ticket{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:10px;position:sticky;top:84px}
+.ticket .big{font-family:var(--f-display);font-weight:800;font-size:clamp(40px,6vw,56px);line-height:1;color:var(--ink)}
+.ticket .tag{font-family:var(--f-mono);font-size:12px;background:var(--accent-soft);padding:4px 8px;border-radius:4px;justify-self:start}
+.ticket dl{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin:0;font-size:15px}
+.ticket dd{margin:0;font-family:var(--f-mono);text-align:right}
+/* Orden de servicio (temario) */
+.orden{background:var(--paper);border:1.5px solid var(--ink);border-radius:6px;overflow:hidden}
+.orden-head{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1.5px solid var(--ink)}
+.orden-head div{padding:10px 14px;border-right:1px solid var(--line);min-width:0}
+.orden-head div:last-child{border-right:0}
+.orden-head span{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.orden-head b{font-family:var(--f-display);font-size:19px}
+.mod{padding:12px 14px 4px;border-bottom:1px solid var(--line);background:var(--card)}
+.mod b{font-family:var(--f-display);font-size:22px}
+.mod span{display:block;color:var(--muted);font-size:14px}
+details.cl{border-bottom:1px solid var(--line)}
+details.cl summary{list-style:none;display:grid;grid-template-columns:62px minmax(0,1fr) 24px;gap:12px;align-items:center;padding:12px 14px;cursor:pointer}
+details.cl summary::-webkit-details-marker{display:none}
+details.cl summary .f{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+details.cl summary .t{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.1}
+details.cl summary .pl{font-family:var(--f-mono);font-size:20px;text-align:center;transition:transform .2s}
+details.cl[open] summary .pl{transform:rotate(45deg)}
+details.cl .body{padding:0 14px 16px 88px;display:grid;gap:8px}
+details.cl .body ul{margin:0;padding-left:18px;display:grid;gap:3px;font-size:15.5px}
+details.cl .prac{font-size:14.5px;color:var(--muted)}
+/* Nota de venta */
+.venta{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+.nota{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:24px 22px;font-family:var(--f-mono);font-size:14.5px;position:relative;box-shadow:0 10px 30px #00000014}
+.nota::before,.nota::after{content:"";position:absolute;left:0;right:0;height:10px;background:radial-gradient(circle at 7px 0,transparent 6px,var(--paper) 6.5px) repeat-x;background-size:14px 10px}
+.nota::before{top:-9px;transform:scaleY(-1)}
+.nota::after{bottom:-9px}
+.nota h3{font-family:var(--f-display);font-size:26px;text-align:center}
+.nota .sub{text-align:center;color:var(--muted);font-size:12.5px;margin-bottom:14px}
+.nota table{width:100%;border-collapse:collapse}
+.nota td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line)}
+.nota td:last-child{text-align:right;white-space:nowrap;padding-left:10px}
+.nota .tot td{border-bottom:0;padding-top:12px;font-weight:600}
+.nota s{color:var(--muted)}
+.nota .inv{font-family:var(--f-display);font-size:40px;font-weight:800;color:var(--ink)}
+.nota .ref{font-size:12px;color:var(--muted);margin-top:8px}
+.side{display:grid;gap:14px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:8px}
+.box.am{background:var(--accent-soft);border-color:transparent}
+.box.ok{border-color:var(--green)}
+/* Para quién */
+.quien{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.quien ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.quien li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start}
+.quien .mk{font-family:var(--f-mono);font-weight:700;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:14px}
+.si .mk{background:var(--green);color:#fff}.no .mk{background:var(--red);color:#fff}
+/* Instructor */
+.inst{display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:center}
+.inst .ph{background:var(--band);border-radius:14px;overflow:hidden;aspect-ratio:3/4;max-width:100%;display:flex;align-items:flex-end;justify-content:center;position:relative}
+.inst .ph img{height:96%;width:auto;max-width:92%;object-fit:contain;object-position:bottom;display:block}
+.inst .ph::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--accent)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:8px 0 0;list-style:none}
+.tools li{font-family:var(--f-mono);font-size:13px;border:1px solid var(--line);border-radius:5px;padding:5px 9px}
+/* FAQ */
+.faq{display:grid;gap:10px;max-width:860px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:var(--r)}
+.faq summary{cursor:pointer;padding:14px 16px;font-weight:600;font-size:17px}
+.faq details p{padding:0 16px 16px;color:var(--muted)}
+/* Cierre y barra fija */
+.cierre{background:var(--band);color:var(--band-ink);text-align:left}
+.cierre .wrap{display:grid;gap:16px}
+.cierre h2{color:var(--band-ink)}
+.cierre p{color:var(--band-muted);max-width:40em}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--band);color:var(--band-ink);border-top:3px solid var(--accent);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sticky .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding-block:8px}
+.sticky .txt{min-width:0;display:grid}
+.sticky .txt b{font-family:var(--f-display);font-size:19px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .txt span{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+.sticky .btn{min-height:46px;font-size:18px;white-space:nowrap;padding:8px 16px}
+footer{padding-block:28px 110px;color:var(--muted);font-size:13.5px}
+footer .wrap{display:grid;gap:8px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:8px;font-size:15px;z-index:70}
+@media (max-width:900px){
+  .hero .wrap,.diag,.calc,.venta,.inst{grid-template-columns:minmax(0,1fr)}
+  .tips{grid-template-columns:minmax(0,1fr)}
+  .result,.ticket{position:static}
+  .inst .ph{max-width:300px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  section{padding-block:48px}
+  .sedes,.quien{grid-template-columns:minmax(0,1fr)}
+  .orden-head{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .orden-head div:nth-child(2){border-right:0}
+  .orden-head div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  details.cl summary{grid-template-columns:44px minmax(0,1fr) 20px;gap:8px}
+  details.cl .body{padding:0 14px 14px 14px}
+  .q{grid-template-columns:minmax(0,1fr)}
+  .brand span{display:none}
+  .top .btn{font-size:16px}
+  .sticky .txt b{font-size:16px}
+  .sticky .btn{font-size:16px;padding:8px 12px}
+  .hero .ctas .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.bench .trace{stroke-dashoffset:0}}
+</style>
+
+<div lang="es-MX">
+<header class="top" aria-label="Barra superior">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Electrónica y Servicio, inicio"><img src="{{LOGO}}" alt="Electrónica y Servicio" width="90" height="34"><span>Reparación de computadoras automotrices</span></a>
+    <a class="btn btn-primary js-cta" data-ctx="barra" href="#precio">Inscribirme</a>
+  </div>
+</header>
+
+<main id="inicio">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Curso presencial teórico-práctico · 2026</p>
+      <h1 id="h1">Reparación de computadoras automotrices</h1>
+      <p class="marcas">Chrysler / Dodge / Jeep / Nissan</p>
+      <p class="tesis">Deja de mandar la ECU al laboratorio. En 2 días aprendes a demostrar en banco si la computadora está dañada, encontrar la etapa que falló y repararla a nivel componente.</p>
+      <ul class="chips" aria-label="Datos del curso">
+        <li><b>12</b> clases · <b>18 h</b></li>
+        <li>2 días por sede</li>
+        <li><b class="js-precio">{{PRECIO}}</b></li>
+        <li>+10 bonos · calculadora de cotización</li>
+      </ul>
+      <div class="ctas">
+        <a class="btn btn-primary js-cta" data-ctx="portada" href="#precio"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>Escribe ECU por WhatsApp</a>
+        <a class="btn btn-ghost" href="#diagnostico">Diagnóstico gratis (2 min)</a>
+      </div>
+      <div class="imparte"><img src="{{PROF}}" alt="Prof. José Luis Orozco Cuautle" width="54" height="54"><p>Imparte <b>Prof. José Luis Orozco Cuautle</b><br>50 años capacitando técnicos en México y Latinoamérica</p></div>
+    </div>
+    <div>
+      <svg class="bench" viewBox="0 0 560 440" role="img" aria-labelledby="benchT benchD">
+        <title id="benchT">Banco de pruebas de una computadora automotriz</title>
+        <desc id="benchD">Fuente de laboratorio a 13.50 voltios y 0.42 amperes alimentando una PCM; el osciloscopio muestra el patrón del sensor de cigüeñal y el pulso de un inyector.</desc>
+        <defs><pattern id="pcb" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" fill="none" stroke="#2A3B33" stroke-width="1"/></pattern></defs>
+        <rect x="18" y="18" width="190" height="112" rx="10" fill="#22272D" stroke="#3A4149"/>
+        <text x="34" y="44" fill="#9BA2AA" font-family="IBM Plex Mono, monospace" font-size="12">FUENTE · CV</text>
+        <text x="34" y="82" fill="#FFC20E" font-family="IBM Plex Mono, monospace" font-size="30" font-weight="600">13.50<tspan font-size="16"> V</tspan></text>
+        <text x="34" y="114" fill="#3BC455" font-family="IBM Plex Mono, monospace" font-size="22">0.42<tspan font-size="14"> A</tspan></text>
+        <circle class="led" cx="186" cy="40" r="6" fill="#3BC455"/>
+        <rect x="232" y="18" width="310" height="196" rx="10" fill="#0B0D0F" stroke="#3A4149"/>
+        <g stroke="#1F262D">
+          <path d="M232 67H542M232 116H542M232 165H542M294 18V214M356 18V214M418 18V214M480 18V214"/>
+        </g>
+        <text x="246" y="38" fill="#9BA2AA" font-family="IBM Plex Mono, monospace" font-size="11">CH1 CKP 2V/div · CH2 INY 20V/div</text>
+        <path class="trace" fill="none" stroke="#FFC20E" stroke-width="2.2" d="M246 100h8v-26h8v26h8v-26h8v26h8v-26h8v26h8v-26h8v26h8v-26h8v26h26v-26h8v26h8v-26h8v26h8v-26h8v26h8v-26h8v26h8v-26h8v26h8v-26h8v26h8v-26h8v26h8v-26h8v26h8v-26h8v26"/>
+        <path class="trace" fill="none" stroke="#6EA2FF" stroke-width="2.2" d="M246 176h60v26h96l4-84 4 6 6-2 8 54h112"/>
+        <text x="420" y="132" fill="#6EA2FF" font-family="IBM Plex Mono, monospace" font-size="11">pico de clamp</text>
+        <rect class="blink" x="522" y="190" width="8" height="14" fill="#FFC20E"/>
+        <rect x="18" y="248" width="524" height="174" rx="12" fill="#1A2420" stroke="#2F4A3D"/>
+        <rect x="18" y="248" width="524" height="174" rx="12" fill="url(#pcb)"/>
+        <rect x="230" y="290" width="96" height="96" rx="4" fill="#111" stroke="#555"/>
+        <text x="278" y="342" text-anchor="middle" fill="#C9CED4" font-family="IBM Plex Mono, monospace" font-size="11">MCU</text>
+        <g fill="#B9BEC4"><rect x="222" y="296" width="8" height="3"/><rect x="222" y="306" width="8" height="3"/><rect x="222" y="316" width="8" height="3"/><rect x="222" y="326" width="8" height="3"/><rect x="222" y="336" width="8" height="3"/><rect x="222" y="346" width="8" height="3"/><rect x="222" y="356" width="8" height="3"/><rect x="222" y="366" width="8" height="3"/><rect x="326" y="296" width="8" height="3"/><rect x="326" y="306" width="8" height="3"/><rect x="326" y="316" width="8" height="3"/><rect x="326" y="326" width="8" height="3"/><rect x="326" y="336" width="8" height="3"/><rect x="326" y="346" width="8" height="3"/><rect x="326" y="356" width="8" height="3"/><rect x="326" y="366" width="8" height="3"/></g>
+        <rect x="60" y="292" width="58" height="34" rx="3" fill="#111" stroke="#555"/><text x="89" y="313" text-anchor="middle" fill="#C9CED4" font-family="IBM Plex Mono, monospace" font-size="10">5V REF</text>
+        <rect x="60" y="342" width="58" height="34" rx="3" fill="#111" stroke="#555"/><text x="89" y="363" text-anchor="middle" fill="#C9CED4" font-family="IBM Plex Mono, monospace" font-size="10">CAN</text>
+        <g><rect x="400" y="282" width="42" height="30" rx="2" fill="#1C1C1C" stroke="#666"/><rect x="452" y="282" width="42" height="30" rx="2" fill="#1C1C1C" stroke="#666"/><rect x="400" y="326" width="42" height="30" rx="2" fill="#1C1C1C" stroke="#666"/><rect x="452" y="326" width="42" height="30" rx="2" fill="#1C1C1C" stroke="#666"/></g>
+        <text x="447" y="378" text-anchor="middle" fill="#C9CED4" font-family="IBM Plex Mono, monospace" font-size="10">DRIVERS</text>
+        <g fill="none" stroke="#C99400" stroke-width="2" opacity=".85"><path d="M118 309h60v-6h42"/><path d="M118 359h70v-18h32"/><path d="M334 320h40v-23h26"/><path d="M334 350h40v-9h26"/><path d="M89 248v44"/><path d="M110 130v80h-21v38"/></g>
+        <g><circle class="led" cx="400" cy="402" r="5" fill="#FFC20E"/><circle class="led" cx="420" cy="402" r="5" fill="#FFC20E" style="animation-delay:.4s"/><circle class="led" cx="440" cy="402" r="5" fill="#FFC20E" style="animation-delay:.8s"/><circle class="led" cx="460" cy="402" r="5" fill="#FFC20E" style="animation-delay:1.2s"/></g>
+        <text x="476" y="406" fill="#9BA2AA" font-family="IBM Plex Mono, monospace" font-size="10">INY 1–4</text>
+        <rect x="18" y="148" width="190" height="66" rx="10" fill="#22272D" stroke="#3A4149"/>
+        <text x="34" y="172" fill="#9BA2AA" font-family="IBM Plex Mono, monospace" font-size="11">ESCÁNER · DLC 6/14</text>
+        <text x="34" y="200" fill="#EEF0F2" font-family="IBM Plex Mono, monospace" font-size="15">RPM 812 · DTC 0</text>
+      </svg>
+    </div>
+  </div>
+  <div class="wrap"><div class="sedes" aria-label="Sedes y fechas" style="grid-column:1/-1">{{SEDES}}</div></div>
+</section>
+
+<section id="consejos" aria-labelledby="h-consejos">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">3 consejos gratis para tu próximo diagnóstico</p><h2 id="h-consejos">Antes de condenar una computadora, mide esto</h2></div>
+    <div class="tips">{{TIPS}}</div>
+  </div>
+</section>
+
+<div class="tape" role="presentation"></div>
+
+<section id="diagnostico" aria-labelledby="h-diag">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Diagnóstico gratis · 10 preguntas</p><h2 id="h-diag">¿Qué tan listo estás para reparar computadoras?</h2><p>Contesta con honestidad. El semáforo te dice tu nivel y qué clase del curso cubre lo que te falta.</p></div>
+    <div class="diag">
+      <form id="qform" class="qlist" aria-label="Preguntas del diagnóstico">{{QUESTIONS}}</form>
+      <aside class="result" aria-live="polite" aria-labelledby="r-title">
+        <div class="semaforo" aria-hidden="true"><i class="r"></i><i class="a"></i><i class="v"></i></div>
+        <p class="score"><span id="r-score">0</span><small> / 10</small></p>
+        <h3 id="r-title">Contesta las preguntas</h3>
+        <p id="r-text" class="note">Tu resultado aparece aquí en cuanto respondas.</p>
+        <div id="r-miss-wrap" hidden><p class="eyebrow">Lo que te falta y dónde lo ves</p><ul id="r-miss" class="missing"></ul></div>
+        <div class="btns">
+          <a id="r-wa" class="btn btn-primary js-cta" data-ctx="diagnostico" href="#precio">Enviar mi resultado por WhatsApp</a>
+          <button id="r-share" class="btn btn-line" type="button">Copiar resultado para un colega</button>
+        </div>
+        <p class="note">¿Quieres probar con un auto real? Usa el <a class="js-lead" href="#">Árbol de diagnóstico ECU gratuito</a>.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="calculadora" aria-labelledby="h-calc" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Calculadora · ejemplo ilustrativo</p><h2 id="h-calc">¿Cuánto dinero dejas ir cada mes?</h2><p>Mueve los controles con los números de tu taller. Es una estimación para que tomes decisiones, no una promesa de ingresos.</p></div>
+    <div class="calc">
+      <div class="sliders">{{SLIDERS}}</div>
+      <div class="ticket" aria-live="polite">
+        <span class="tag">EJEMPLO ILUSTRATIVO</span>
+        <p class="eyebrow">Dinero que hoy no cobras al mes</p>
+        <p class="big mono" id="c-total">$0</p>
+        <dl>
+          <dt>Reparaciones que podrías hacer tú</dt><dd id="c-rep">$0</dd>
+          <dt>Diagnósticos que podrías cobrar</dt><dd id="c-diag">$0</dd>
+          <dt>Inversión del curso</dt><dd id="c-inv">{{PRECIO}}</dd>
+          <dt><b>Días para recuperarla</b></dt><dd><b id="c-dias">—</b></dd>
+        </dl>
+        <a id="c-wa" class="btn btn-primary js-cta" data-ctx="calculadora" href="#precio">Quiero recuperar ese dinero</a>
+        <p class="note">Cálculo: computadoras × (precio − materiales) + diagnósticos × cobro. Depende de tu plaza, esfuerzo y calidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="temario" aria-labelledby="h-temario">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Temario completo · 12 clases de 1 h 30 min</p><h2 id="h-temario">Orden de servicio del curso</h2><p>Basado en el programa oficial del curso y complementado con valores de referencia, normas y prácticas con equipo real. Toca cada clase para ver sus temas.</p></div>
+    <div class="orden">
+      <div class="orden-head"><div><span>Folio</span><b class="mono">ECU-2026</b></div><div><span>Técnico</span><b>Prof. J. L. Orozco C.</b></div><div><span>Duración</span><b>18 h · 2 días</b></div><div><span>Marcas</span><b>Chrysler · Nissan</b></div></div>
+      {{TEMARIO}}
+    </div>
+  </div>
+</section>
+
+<section id="precio" aria-labelledby="h-precio" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Todo lo que incluye</p><h2 id="h-precio">Tu nota de venta</h2></div>
+    <div class="venta">
+      <div class="nota" role="group" aria-label="Pila de valor del curso">
+        <h3>NOTA DE VENTA</h3>
+        <p class="sub">Electrónica y Servicio · Curso presencial · <span class="js-grupo">{{GRUPO}}</span></p>
+        <table><tbody>{{STACK}}
+          <tr class="tot"><td>Valor de referencia total</td><td><s>{{TOTAL}}</s></td></tr>
+        </tbody></table>
+        <p class="eyebrow" style="margin-top:14px">Tu inversión (precio total)</p>
+        <p class="inv js-precio">{{PRECIO}}</p>
+        <p class="ref">Los valores son de referencia interna (no son precios anteriores ni descuentos). {{PROMO}}</p>
+        <div style="display:grid;gap:8px;margin-top:16px">
+          <a class="btn btn-primary js-cta" data-ctx="precio" href="#precio">Escribe ECU por WhatsApp</a>
+          <p class="note" style="text-align:center">Te enviamos datos de pago y apartamos tu lugar en la sede que elijas.</p>
+        </div>
+      </div>
+      <div class="side">
+        <div class="box am"><h3>{{BUENFIN_T}}</h3><p>{{BUENFIN_D}}</p><p class="note">Bono en lugar de descuento · por confirmar.</p></div>
+        <div class="box"><h3>Cupo limitado por sede</h3><p>Cada alumno necesita lugar en un banco de práctica. León: 27–28 de noviembre. CDMX: 16–17 de diciembre de 2026.</p></div>
+        <div class="box"><h3>Formas de pago</h3><p>Transferencia, depósito o pago en tienda; meses sin intereses con tarjeta y apartado con anticipo (por confirmar).</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien" aria-labelledby="h-quien">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Sé honesto contigo</p><h2 id="h-quien">¿Es para ti?</h2></div>
+    <div class="quien">
+      <div class="box si"><h3>Sí es para ti si…</h3><ul>{{SI}}</ul></div>
+      <div class="box no"><h3>No es para ti si…</h3><ul>{{NO}}</ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="instructor" aria-labelledby="h-inst" style="background:var(--paper)">
+  <div class="wrap inst">
+    <div class="ph"><img src="{{PROF}}" alt="Prof. José Luis Orozco Cuautle, instructor del curso" width="280" height="578"></div>
+    <div style="display:grid;gap:14px;min-width:0">
+      <p class="eyebrow">Imparte</p>
+      <h2 id="h-inst">Prof. José Luis Orozco Cuautle</h2>
+      <p>50 años de experiencia en capacitación técnica en electrónica y electricidad automotriz para técnicos de México y Latinoamérica. Fundador de Electrónica y Servicio.</p>
+      <p>En el curso trabaja con el mismo equipo que encontrarás en un taller serio:</p>
+      <ul class="tools">{{TOOLS}}</ul>
+      <div class="box ok" style="margin-top:8px"><h3>{{GAR_T}}</h3><p>{{GAR_D}}</p><p class="note">Garantía de acompañamiento condicionada · por confirmar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Preguntas frecuentes</p><h2 id="h-faq">Lo que nos preguntan antes de inscribirse</h2></div>
+    <div class="faq">{{FAQ}}</div>
+  </div>
+</section>
+
+<section class="cierre" aria-labelledby="h-cierre">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--accent)">Última llamada</p>
+    <h2 id="h-cierre">La próxima computadora "muerta" que llegue a tu taller puede ser tu mejor trabajo del mes</h2>
+    <p>Aprende el método por etapas con práctica real, fichas, plantillas y la calculadora para cobrar con garantía.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn btn-primary js-cta" data-ctx="cierre" href="#precio">Escribe ECU por WhatsApp</a><a class="btn btn-ghost js-lead" href="#">Prueba el árbol de diagnóstico gratis</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Electrónica y Servicio</b> · electronicayservicio.com · Informes: <span class="mono">55 5217 3484</span> (WhatsApp)</p>
+    <p>Curso independiente: no está afiliado, patrocinado ni avalado por Chrysler, Dodge, Jeep, Stellantis, Nissan ni por los fabricantes de herramientas mencionados; las marcas se citan sólo para describir el contenido.</p>
+    <p>Los ejemplos de precios, ingresos y tiempos son ilustrativos y no constituyen promesa de resultados. Precios en pesos mexicanos, precio total. Aviso de privacidad: por confirmar.</p>
+  </div>
+</footer>
+
+<div class="sticky" role="region" aria-label="Inscripción">
+  <div class="wrap">
+    <div class="txt"><b>Reparación de computadoras automotrices</b><span><span class="js-precio">{{PRECIO}}</span> · León y CDMX</span></div>
+    <a class="btn btn-primary js-cta" data-ctx="barra fija" href="#precio">Escribe ECU</a>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+</div>
+
+<script>
+/* ===== CONFIG · edita aquí ===== */
+const CONFIG = {
+  whatsapp: "525552173484",          // 52 + 10 dígitos. Vacío = los botones bajan a la sección de precio
+  checkoutUrl: "",                   // Enlace de pago (Mercado Pago, Stripe, Shopify, GoHighLevel). Si existe, los botones van al pago
+  precio: 1799,                      // MXN, precio total
+  periodoDeAcceso: "Materiales digitales: acceso permanente (por confirmar)",
+  proximoGrupo: "León 27–28 nov · CDMX 16–17 dic 2026",
+  promo: "Bono Buen Fin: 13 al 17 de noviembre de 2026 (por confirmar)",
+  leadMagnetUrl: "{{LEADURL}}"       // Enlace al Árbol de diagnóstico ECU (lead magnet)
+};
+/* ================================ */
+const DATA = {{DATA}};
+(function(){
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const fmt = n => '$' + Math.round(n).toLocaleString('es-MX') + ' MXN';
+  const state = { diag: null, calc: null };
+  $$('.js-precio').forEach(e => e.textContent = fmt(CONFIG.precio));
+  $$('.js-grupo').forEach(e => e.textContent = CONFIG.proximoGrupo);
+  $$('.js-lead').forEach(a => { if (CONFIG.leadMagnetUrl) { a.href = CONFIG.leadMagnetUrl; a.target = '_blank'; a.rel = 'noopener'; } });
+  function message(ctx) {
+    let m = 'Hola, quiero informes del curso Reparación de computadoras automotrices. ECU';
+    if (state.diag && (ctx === 'diagnostico' || ctx === 'portada' || ctx === 'cierre' || ctx === 'precio')) m += `\nMi diagnóstico: ${state.diag.score}/10 (${state.diag.nivel}).` + (state.diag.miss.length ? ` Me falta: ${state.diag.miss.join('; ')}.` : '');
+    if (state.calc && (ctx === 'calculadora' || ctx === 'precio')) m += `\nCalculadora (ejemplo): dejo ir ${fmt(state.calc.total)} al mes; recuperaría el curso en ${state.calc.dias}.`;
+    m += `\nSede de interés: ${CONFIG.proximoGrupo}`;
+    return m;
+  }
+  function ctaHref(ctx) {
+    if (CONFIG.checkoutUrl) return CONFIG.checkoutUrl;
+    if (CONFIG.whatsapp) return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(message(ctx));
+    return '#precio';
+  }
+  function refreshCtas() { $$('.js-cta').forEach(a => { const h = ctaHref(a.dataset.ctx); a.href = h; if (h.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener'; } else { a.removeAttribute('target'); } }); }
+  // Diagnóstico
+  const form = $('#qform');
+  function diag() {
+    const ans = DATA.diagnostico.map((q, i) => { const v = form.querySelector(`input[name=q${i}]:checked`); return v ? v.value : null; });
+    const answered = ans.filter(a => a !== null).length, score = ans.filter(a => a === 'si').length;
+    const lights = $$('.semaforo i'); lights.forEach(l => l.classList.remove('on'));
+    if (!answered) { $('#r-title').textContent = 'Contesta las preguntas'; state.diag = null; refreshCtas(); return; }
+    let nivel, t;
+    if (score <= 4) { nivel = 'rojo'; lights[0].classList.add('on'); t = 'Te falta método: hoy es fácil condenar una computadora sana. El curso te da el orden completo, desde el diagrama de bloques hasta el banco.'; }
+    else if (score <= 7) { nivel = 'amarillo'; lights[1].classList.add('on'); t = 'Tienes bases. Te faltan etapas clave para reparar con seguridad y cobrar con garantía.'; }
+    else { nivel = 'verde'; lights[2].classList.add('on'); t = 'Vas bien. El curso te ayuda a estandarizar, validar con evidencia y cobrar mejor.'; }
+    $('#r-score').textContent = score; $('#r-title').textContent = 'Nivel ' + nivel + (answered < 10 ? ` · ${answered}/10 respondidas` : '');
+    $('#r-text').textContent = t;
+    const miss = ans.map((a, i) => a === 'no' ? DATA.diagnostico[i] : null).filter(Boolean);
+    const ul = $('#r-miss'); ul.innerHTML = '';
+    miss.forEach(m => { const li = document.createElement('li'); const c = DATA.clases.find(x => x.n === m[1]); li.textContent = `Clase ${m[1]}: ${c ? c.titulo : ''}`; ul.appendChild(li); });
+    $('#r-miss-wrap').hidden = !miss.length;
+    state.diag = { score, nivel, miss: miss.map(m => 'Clase ' + m[1]) };
+    try { localStorage.setItem('ecu_diag', JSON.stringify(ans)); } catch (e) {}
+    refreshCtas();
+  }
+  form.addEventListener('change', diag);
+  try { const saved = JSON.parse(localStorage.getItem('ecu_diag') || 'null'); if (saved) saved.forEach((v, i) => { if (v) { const el = form.querySelector(`input[name=q${i}][value=${v}]`); if (el) el.checked = true; } }); } catch (e) {}
+  diag();
+  function toast(t) { const el = $('#toast'); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2600); }
+  $('#r-share').addEventListener('click', () => {
+    const s = state.diag ? `Saqué ${state.diag.score}/10 (nivel ${state.diag.nivel}) en el diagnóstico de reparación de computadoras automotrices. ¿Cuánto sacas tú?` : 'Haz el diagnóstico gratis de reparación de computadoras automotrices.';
+    const txt = s + (CONFIG.leadMagnetUrl ? ' Prueba también el árbol de diagnóstico: ' + CONFIG.leadMagnetUrl : '') + ' · Electrónica y Servicio';
+    const done = () => toast('Texto copiado. Pégalo en WhatsApp para retar a un colega.');
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, () => fallbackCopy(txt, done)); else fallbackCopy(txt, done);
+  });
+  function fallbackCopy(t, done) { const ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) { toast('Selecciona y copia: ' + t.slice(0, 60) + '…'); } ta.remove(); }
+  // Calculadora
+  const sl = {}; DATA.calculadora.forEach(c => sl[c.id] = $('#s-' + c.id));
+  function calc() {
+    const v = {}; DATA.calculadora.forEach(c => { v[c.id] = Number(sl[c.id].value); const o = $('#o-' + c.id); o.textContent = c.fmt === '$' ? fmt(v[c.id]) : v[c.id]; });
+    const rep = v.ecus * Math.max(0, v.precio - v.material), dg = v.diags * v.cobroDiag, total = rep + dg;
+    const dias = total > 0 ? Math.ceil(CONFIG.precio / (total / 30)) + ' días' : 'sin estimar';
+    $('#c-rep').textContent = fmt(rep); $('#c-diag').textContent = fmt(dg); $('#c-total').textContent = fmt(total); $('#c-dias').textContent = dias; $('#c-inv').textContent = fmt(CONFIG.precio);
+    state.calc = { total, dias }; refreshCtas();
+  }
+  Object.values(sl).forEach(s => s.addEventListener('input', calc)); calc();
+  refreshCtas();
+})();
+</script>

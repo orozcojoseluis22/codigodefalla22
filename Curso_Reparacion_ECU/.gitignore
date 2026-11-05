@@ -1,0 +1,3 @@
+# El ZIP duplica todo el contenido de las carpetas; se entrega aparte
+00_Indice_de_entregables/*.zip
+_codigo_fuente/html/_tmp_*
